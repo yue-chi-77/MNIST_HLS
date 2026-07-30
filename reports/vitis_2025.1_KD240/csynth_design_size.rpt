@@ -1,0 +1,68 @@
+================================================================
+== Design Size Report
+================================================================
+
+* Total Instructions per Compilation Phase
++---------------+-----------------------------+--------------+----------------------------------------------------------------------------------------+
+| Phase         | Step                        | Instructions | Description                                                                            |
++---------------+-----------------------------+--------------+----------------------------------------------------------------------------------------+
+| Compile/Link  |                             | 4,131        | After all functions are compiled and linked into a single design                       |
+|               |                             |              |                                                                                        |
+| Unroll/Inline |                             |              | After user unroll and inline pragmas are applied                                       |
+|               | (1) unroll                  | 2,703        | user unroll pragmas are applied                                                        |
+|               | (2) simplification          |   694        | simplification of applied user unroll pragmas                                          |
+|               | (3) inline                  |   636        | user inline pragmas are applied                                                        |
+|               | (4) simplification          |   357        | simplification of applied user inline pragmas                                          |
+|               |                             |              |                                                                                        |
+| Array/Struct  |                             |              | After user array partition and struct aggregate/disaggregate pragmas are applied       |
+|               | (1) array partition         |   258        | user array partition pragmas are applied                                               |
+|               | (2) simplification          |   258        | simplification of applied user array partition & struct aggregate/disaggregate pragmas |
+|               | (3) aggregate/disaggregate  |   258        | user struct aggregate/disaggregate pragmas are applied                                 |
+|               | (4) array reshape           |   258        | apply array reshape pragmas                                                            |
+|               | (5) access patterns         | 7,238        | array access pattern optmizations                                                      |
+|               |                             |              |                                                                                        |
+| Performance   |                             |              | After transformations are applied to meet performance pragma targets                   |
+|               | (1) loop simplification     | 6,312        | loop and instruction simplification                                                    |
+|               | (2) parallelization         | 6,263        | loops are unrolled or pipelined to meet performance targets                            |
+|               | (3) array partition         | 6,262        | arrays are partitioned to meet performance targets                                     |
+|               | (4) simplification          | 6,262        | simplification of design after performance transformations                             |
+|               |                             |              |                                                                                        |
+| HW Transforms |                             |              | After hardware transfomations                                                          |
+|               | (1) lowering                | 7,411        | initial conversion to HW specific instructions                                         |
+|               | (2) optimizations           | 7,429        | high level synthesis optimizations                                                     |
++---------------+-----------------------------+--------------+----------------------------------------------------------------------------------------+
+
+* Instructions per Function for each Compilation Phase
++------------------------+----------------+------------------+---------------+-----------------+-----------------+-----------------+
+| Function               | Location       | Compile/Link     | Unroll/Inline | Array/Struct    | Performance     | HW Transforms   |
++------------------------+----------------+------------------+---------------+-----------------+-----------------+-----------------+
+| + MultilayerPerceptron | MLP.cpp:142    | 4,131            | 357           | 7,238           | 6,262           | 7,429           |
+|  + FullyConnectedLayer | MLP.cpp:18     | 4,038 (3 calls)  | 315 (3 calls) | 7,194 (3 calls) | 6,220 (3 calls) | 7,379 (3 calls) |
+|     DataPack           | DataPack.h:126 |   12 (3 calls)   |               |                 |                 |                 |
+|   + operator[]         | DataPack.h:237 |  648 (9 calls)   |               |                 |                 |                 |
+|    + Get               | DataPack.h:161 |  621 (9 calls)   |               |                 |                 |                 |
+|       from_range       | DataPack.h:31  |   27 (9 calls)   |               |                 |                 |                 |
+|   + operator[]         | DataPack.h:329 |  192 (24 calls)  |               |                 |                 |                 |
+|      DataPackProxy     | DataPack.h:283 |  120 (24 calls)  |               |                 |                 |                 |
+|   + operator=          | DataPack.h:299 | 1,032 (12 calls) |               |                 |                 |                 |
+|    + Set               | DataPack.h:174 |  948 (12 calls)  |               |                 |                 |                 |
+|       to_range         | DataPack.h:35  |   48 (12 calls)  |               |                 |                 |                 |
+|     ~DataPackProxy     | DataPack.h:292 |   24 (24 calls)  |               |                 |                 |                 |
+|     MultiplyFabric     | MLP.cpp:6      |   27 (3 calls)   |               |                 |                 |                 |
+|   + DataPack           | DataPack.h:132 |  288 (3 calls)   |               |                 |                 |                 |
+|    + Fill              | DataPack.h:188 |  273 (3 calls)   |               |                 |                 |                 |
+|     + Set              | DataPack.h:174 |  237 (3 calls)   |               |                 |                 |                 |
+|        to_range        | DataPack.h:35  |   12 (3 calls)   |               |                 |                 |                 |
+|   + operator short     | DataPack.h:314 |  900 (12 calls)  |               |                 |                 |                 |
+|    + Get               | DataPack.h:161 |  828 (12 calls)  |               |                 |                 |                 |
+|       from_range       | DataPack.h:31  |   36 (12 calls)  |               |                 |                 |                 |
++------------------------+----------------+------------------+---------------+-----------------+-----------------+-----------------+
+
+* Design Size Message Settings
++---------------------------------------------+--------+------------------------------------------------------------------+
+| Message Setting                             | Value  | Description                                                      |
++---------------------------------------------+--------+------------------------------------------------------------------+
+| config_compile -design_size_maximum_warning | 100000 | Show a warning when total design instructions exceeds this value |
++---------------------------------------------+--------+------------------------------------------------------------------+
+
+
