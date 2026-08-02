@@ -1,0 +1,587 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version      : Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
+| Date              : Sun Aug  2 12:50:20 2026
+| Host              : ntk-System-Product-Name running 64-bit Ubuntu 22.04.5 LTS
+| Command           : report_timing -delay_type max -max_paths 10 -nworst 1 -file /media/ntk/sda4/yuechi/mnist_hls_v2/results/expA_250mhz/timing_worst.rpt
+| Design            : design_1_wrapper
+| Device            : xck24-ubva530
+| Speed File        : -2LV  PRODUCTION 1.30 05-15-2022
+| Design State      : Routed
+| Temperature Grade : C
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Timing Report
+
+Slack (MET) :             0.010ns  (required time - arrival time)
+  Source:                 design_1_i/MultilayerPerceptron_0/inst/data1_U/ram_reg_bram_0/CLKARDCLK
+                            (rising edge-triggered cell RAMB18E2 clocked by clk_pl_0  {rise@0.000ns fall@2.000ns period=4.000ns})
+  Destination:            design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U388/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST/B[5]
+                            (rising edge-triggered cell DSP_A_B_DATA clocked by clk_pl_0  {rise@0.000ns fall@2.000ns period=4.000ns})
+  Path Group:             clk_pl_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            4.000ns  (clk_pl_0 rise@4.000ns - clk_pl_0 rise@0.000ns)
+  Data Path Delay:        3.044ns  (logic 1.283ns (42.142%)  route 1.761ns (57.858%))
+  Logic Levels:           0  
+  Clock Path Skew:        -0.316ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.136ns = ( 6.136 - 4.000 ) 
+    Source Clock Delay      (SCD):    2.575ns
+    Clock Pessimism Removal (CPR):    0.123ns
+  Clock Uncertainty:      0.122ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.233ns
+    Phase Error              (PE):    0.000ns
+  Clock Net Delay (Source):      2.308ns (routing 0.795ns, distribution 1.513ns)
+  Clock Net Delay (Destination): 1.920ns (routing 0.726ns, distribution 1.194ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_pl_0 rise edge)
+                                                      0.000     0.000 r  
+    PS8_X0Y0             PS8                          0.000     0.000 r  design_1_i/zynq_ultra_ps_e_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.229     0.229    design_1_i/zynq_ultra_ps_e_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y58        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.038     0.267 r  design_1_i/zynq_ultra_ps_e_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X0Y1 (CLOCK_ROOT)    net (fo=22060, routed)       2.308     2.575    design_1_i/MultilayerPerceptron_0/inst/data1_U/ap_clk
+    RAMB18_X2Y24         RAMB18E2                                     r  design_1_i/MultilayerPerceptron_0/inst/data1_U/ram_reg_bram_0/CLKARDCLK
+  -------------------------------------------------------------------    -------------------
+    RAMB18_X2Y24         RAMB18E2 (Prop_RAMB18E2_L_RAMB180_CLKARDCLK_DOUTADOUT[5])
+                                                      1.283     3.858 r  design_1_i/MultilayerPerceptron_0/inst/data1_U/ram_reg_bram_0/DOUTADOUT[5]
+                         net (fo=256, routed)         1.761     5.620    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U388/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/B[5]
+    DSP48E2_X0Y13        DSP_A_B_DATA                                 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U388/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST/B[5]
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_pl_0 rise edge)
+                                                      4.000     4.000 r  
+    PS8_X0Y0             PS8                          0.000     4.000 r  design_1_i/zynq_ultra_ps_e_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.181     4.181    design_1_i/zynq_ultra_ps_e_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y58        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.035     4.216 r  design_1_i/zynq_ultra_ps_e_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X0Y1 (CLOCK_ROOT)    net (fo=22060, routed)       1.920     6.136    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U388/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/CLK
+    DSP48E2_X0Y13        DSP_A_B_DATA                                 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U388/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST/CLK
+                         clock pessimism              0.123     6.259    
+                         clock uncertainty           -0.122     6.137    
+    DSP48E2_X0Y13        DSP_A_B_DATA (Setup_DSP_A_B_DATA_DSP48E2_CLK_B[5])
+                                                     -0.508     5.629    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U388/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST
+  -------------------------------------------------------------------
+                         required time                          5.629    
+                         arrival time                          -5.620    
+  -------------------------------------------------------------------
+                         slack                                  0.010    
+
+Slack (MET) :             0.013ns  (required time - arrival time)
+  Source:                 design_1_i/MultilayerPerceptron_0/inst/data1_U/ram_reg_bram_0/CLKARDCLK
+                            (rising edge-triggered cell RAMB18E2 clocked by clk_pl_0  {rise@0.000ns fall@2.000ns period=4.000ns})
+  Destination:            design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U210/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST/B[5]
+                            (rising edge-triggered cell DSP_A_B_DATA clocked by clk_pl_0  {rise@0.000ns fall@2.000ns period=4.000ns})
+  Path Group:             clk_pl_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            4.000ns  (clk_pl_0 rise@4.000ns - clk_pl_0 rise@0.000ns)
+  Data Path Delay:        3.089ns  (logic 1.283ns (41.532%)  route 1.806ns (58.468%))
+  Logic Levels:           0  
+  Clock Path Skew:        -0.268ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.187ns = ( 6.187 - 4.000 ) 
+    Source Clock Delay      (SCD):    2.575ns
+    Clock Pessimism Removal (CPR):    0.120ns
+  Clock Uncertainty:      0.122ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.233ns
+    Phase Error              (PE):    0.000ns
+  Clock Net Delay (Source):      2.308ns (routing 0.795ns, distribution 1.513ns)
+  Clock Net Delay (Destination): 1.971ns (routing 0.726ns, distribution 1.245ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_pl_0 rise edge)
+                                                      0.000     0.000 r  
+    PS8_X0Y0             PS8                          0.000     0.000 r  design_1_i/zynq_ultra_ps_e_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.229     0.229    design_1_i/zynq_ultra_ps_e_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y58        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.038     0.267 r  design_1_i/zynq_ultra_ps_e_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X0Y1 (CLOCK_ROOT)    net (fo=22060, routed)       2.308     2.575    design_1_i/MultilayerPerceptron_0/inst/data1_U/ap_clk
+    RAMB18_X2Y24         RAMB18E2                                     r  design_1_i/MultilayerPerceptron_0/inst/data1_U/ram_reg_bram_0/CLKARDCLK
+  -------------------------------------------------------------------    -------------------
+    RAMB18_X2Y24         RAMB18E2 (Prop_RAMB18E2_L_RAMB180_CLKARDCLK_DOUTADOUT[5])
+                                                      1.283     3.858 r  design_1_i/MultilayerPerceptron_0/inst/data1_U/ram_reg_bram_0/DOUTADOUT[5]
+                         net (fo=256, routed)         1.806     5.664    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U210/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/B[5]
+    DSP48E2_X1Y63        DSP_A_B_DATA                                 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U210/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST/B[5]
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_pl_0 rise edge)
+                                                      4.000     4.000 r  
+    PS8_X0Y0             PS8                          0.000     4.000 r  design_1_i/zynq_ultra_ps_e_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.181     4.181    design_1_i/zynq_ultra_ps_e_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y58        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.035     4.216 r  design_1_i/zynq_ultra_ps_e_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X0Y1 (CLOCK_ROOT)    net (fo=22060, routed)       1.971     6.187    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U210/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/CLK
+    DSP48E2_X1Y63        DSP_A_B_DATA                                 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U210/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST/CLK
+                         clock pessimism              0.120     6.307    
+                         clock uncertainty           -0.122     6.185    
+    DSP48E2_X1Y63        DSP_A_B_DATA (Setup_DSP_A_B_DATA_DSP48E2_CLK_B[5])
+                                                     -0.508     5.677    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U210/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST
+  -------------------------------------------------------------------
+                         required time                          5.677    
+                         arrival time                          -5.664    
+  -------------------------------------------------------------------
+                         slack                                  0.013    
+
+Slack (MET) :             0.020ns  (required time - arrival time)
+  Source:                 design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770_ap_start_reg_reg/C
+                            (rising edge-triggered cell FDRE clocked by clk_pl_0  {rise@0.000ns fall@2.000ns period=4.000ns})
+  Destination:            design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U391/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST/A[5]
+                            (rising edge-triggered cell DSP_A_B_DATA clocked by clk_pl_0  {rise@0.000ns fall@2.000ns period=4.000ns})
+  Path Group:             clk_pl_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            4.000ns  (clk_pl_0 rise@4.000ns - clk_pl_0 rise@0.000ns)
+  Data Path Delay:        3.166ns  (logic 0.542ns (17.119%)  route 2.624ns (82.881%))
+  Logic Levels:           3  (LUT4=1 LUT6=1 MUXF7=1)
+  Clock Path Skew:        -0.175ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.140ns = ( 6.140 - 4.000 ) 
+    Source Clock Delay      (SCD):    2.439ns
+    Clock Pessimism Removal (CPR):    0.123ns
+  Clock Uncertainty:      0.122ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.233ns
+    Phase Error              (PE):    0.000ns
+  Clock Net Delay (Source):      2.172ns (routing 0.795ns, distribution 1.377ns)
+  Clock Net Delay (Destination): 1.924ns (routing 0.726ns, distribution 1.198ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_pl_0 rise edge)
+                                                      0.000     0.000 r  
+    PS8_X0Y0             PS8                          0.000     0.000 r  design_1_i/zynq_ultra_ps_e_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.229     0.229    design_1_i/zynq_ultra_ps_e_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y58        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.038     0.267 r  design_1_i/zynq_ultra_ps_e_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X0Y1 (CLOCK_ROOT)    net (fo=22060, routed)       2.172     2.439    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/ap_clk
+    SLICE_X20Y84         FDRE                                         r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770_ap_start_reg_reg/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X20Y84         FDRE (Prop_HFF_SLICEM_C_Q)
+                                                      0.114     2.553 f  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770_ap_start_reg_reg/Q
+                         net (fo=76, routed)          0.469     3.022    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/flow_control_loop_pipe_sequential_init_U/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770_ap_start_reg
+    SLICE_X19Y76         LUT4 (Prop_G6LUT_SLICEM_I2_O)
+                                                      0.137     3.159 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/flow_control_loop_pipe_sequential_init_U/p_reg_reg_i_44/O
+                         net (fo=1008, routed)        1.643     4.802    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/flow_control_loop_pipe_sequential_init_U/p_reg_reg_i_44_n_0
+    SLICE_X4Y34          LUT6 (Prop_D6LUT_SLICEM_I2_O)
+                                                      0.185     4.987 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/flow_control_loop_pipe_sequential_init_U/p_reg_reg_i_13__221/O
+                         net (fo=1, routed)           0.032     5.019    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/flow_control_loop_pipe_sequential_init_U/p_reg_reg_i_13__221_n_0
+    SLICE_X4Y34          MUXF7 (Prop_F7MUX_CD_SLICEM_I0_O)
+                                                      0.106     5.125 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/flow_control_loop_pipe_sequential_init_U/p_reg_reg_i_3__252/O
+                         net (fo=1, routed)           0.480     5.605    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U391/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/A[5]
+    DSP48E2_X0Y14        DSP_A_B_DATA                                 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U391/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST/A[5]
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_pl_0 rise edge)
+                                                      4.000     4.000 r  
+    PS8_X0Y0             PS8                          0.000     4.000 r  design_1_i/zynq_ultra_ps_e_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.181     4.181    design_1_i/zynq_ultra_ps_e_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y58        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.035     4.216 r  design_1_i/zynq_ultra_ps_e_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X0Y1 (CLOCK_ROOT)    net (fo=22060, routed)       1.924     6.140    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U391/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/CLK
+    DSP48E2_X0Y14        DSP_A_B_DATA                                 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U391/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST/CLK
+                         clock pessimism              0.123     6.263    
+                         clock uncertainty           -0.122     6.141    
+    DSP48E2_X0Y14        DSP_A_B_DATA (Setup_DSP_A_B_DATA_DSP48E2_CLK_A[5])
+                                                     -0.517     5.624    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U391/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST
+  -------------------------------------------------------------------
+                         required time                          5.624    
+                         arrival time                          -5.605    
+  -------------------------------------------------------------------
+                         slack                                  0.020    
+
+Slack (MET) :             0.022ns  (required time - arrival time)
+  Source:                 design_1_i/MultilayerPerceptron_0/inst/data1_U/ram_reg_bram_0/CLKARDCLK
+                            (rising edge-triggered cell RAMB18E2 clocked by clk_pl_0  {rise@0.000ns fall@2.000ns period=4.000ns})
+  Destination:            design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U271/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST/B[6]
+                            (rising edge-triggered cell DSP_A_B_DATA clocked by clk_pl_0  {rise@0.000ns fall@2.000ns period=4.000ns})
+  Path Group:             clk_pl_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            4.000ns  (clk_pl_0 rise@4.000ns - clk_pl_0 rise@0.000ns)
+  Data Path Delay:        3.085ns  (logic 1.297ns (42.043%)  route 1.788ns (57.957%))
+  Logic Levels:           0  
+  Clock Path Skew:        -0.264ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.191ns = ( 6.191 - 4.000 ) 
+    Source Clock Delay      (SCD):    2.575ns
+    Clock Pessimism Removal (CPR):    0.120ns
+  Clock Uncertainty:      0.122ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.233ns
+    Phase Error              (PE):    0.000ns
+  Clock Net Delay (Source):      2.308ns (routing 0.795ns, distribution 1.513ns)
+  Clock Net Delay (Destination): 1.975ns (routing 0.726ns, distribution 1.249ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_pl_0 rise edge)
+                                                      0.000     0.000 r  
+    PS8_X0Y0             PS8                          0.000     0.000 r  design_1_i/zynq_ultra_ps_e_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.229     0.229    design_1_i/zynq_ultra_ps_e_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y58        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.038     0.267 r  design_1_i/zynq_ultra_ps_e_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X0Y1 (CLOCK_ROOT)    net (fo=22060, routed)       2.308     2.575    design_1_i/MultilayerPerceptron_0/inst/data1_U/ap_clk
+    RAMB18_X2Y24         RAMB18E2                                     r  design_1_i/MultilayerPerceptron_0/inst/data1_U/ram_reg_bram_0/CLKARDCLK
+  -------------------------------------------------------------------    -------------------
+    RAMB18_X2Y24         RAMB18E2 (Prop_RAMB18E2_L_RAMB180_CLKARDCLK_DOUTADOUT[6])
+                                                      1.297     3.872 r  design_1_i/MultilayerPerceptron_0/inst/data1_U/ram_reg_bram_0/DOUTADOUT[6]
+                         net (fo=256, routed)         1.788     5.660    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U271/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/B[6]
+    DSP48E2_X1Y60        DSP_A_B_DATA                                 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U271/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST/B[6]
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_pl_0 rise edge)
+                                                      4.000     4.000 r  
+    PS8_X0Y0             PS8                          0.000     4.000 r  design_1_i/zynq_ultra_ps_e_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.181     4.181    design_1_i/zynq_ultra_ps_e_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y58        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.035     4.216 r  design_1_i/zynq_ultra_ps_e_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X0Y1 (CLOCK_ROOT)    net (fo=22060, routed)       1.975     6.191    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U271/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/CLK
+    DSP48E2_X1Y60        DSP_A_B_DATA                                 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U271/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST/CLK
+                         clock pessimism              0.120     6.311    
+                         clock uncertainty           -0.122     6.189    
+    DSP48E2_X1Y60        DSP_A_B_DATA (Setup_DSP_A_B_DATA_DSP48E2_CLK_B[6])
+                                                     -0.507     5.682    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U271/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST
+  -------------------------------------------------------------------
+                         required time                          5.682    
+                         arrival time                          -5.660    
+  -------------------------------------------------------------------
+                         slack                                  0.022    
+
+Slack (MET) :             0.028ns  (required time - arrival time)
+  Source:                 design_1_i/MultilayerPerceptron_0/inst/data1_U/ram_reg_bram_0/CLKARDCLK
+                            (rising edge-triggered cell RAMB18E2 clocked by clk_pl_0  {rise@0.000ns fall@2.000ns period=4.000ns})
+  Destination:            design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U385/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST/B[1]
+                            (rising edge-triggered cell DSP_A_B_DATA clocked by clk_pl_0  {rise@0.000ns fall@2.000ns period=4.000ns})
+  Path Group:             clk_pl_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            4.000ns  (clk_pl_0 rise@4.000ns - clk_pl_0 rise@0.000ns)
+  Data Path Delay:        3.057ns  (logic 1.340ns (43.833%)  route 1.717ns (56.167%))
+  Logic Levels:           0  
+  Clock Path Skew:        -0.263ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.192ns = ( 6.192 - 4.000 ) 
+    Source Clock Delay      (SCD):    2.575ns
+    Clock Pessimism Removal (CPR):    0.120ns
+  Clock Uncertainty:      0.122ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.233ns
+    Phase Error              (PE):    0.000ns
+  Clock Net Delay (Source):      2.308ns (routing 0.795ns, distribution 1.513ns)
+  Clock Net Delay (Destination): 1.976ns (routing 0.726ns, distribution 1.250ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_pl_0 rise edge)
+                                                      0.000     0.000 r  
+    PS8_X0Y0             PS8                          0.000     0.000 r  design_1_i/zynq_ultra_ps_e_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.229     0.229    design_1_i/zynq_ultra_ps_e_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y58        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.038     0.267 r  design_1_i/zynq_ultra_ps_e_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X0Y1 (CLOCK_ROOT)    net (fo=22060, routed)       2.308     2.575    design_1_i/MultilayerPerceptron_0/inst/data1_U/ap_clk
+    RAMB18_X2Y24         RAMB18E2                                     r  design_1_i/MultilayerPerceptron_0/inst/data1_U/ram_reg_bram_0/CLKARDCLK
+  -------------------------------------------------------------------    -------------------
+    RAMB18_X2Y24         RAMB18E2 (Prop_RAMB18E2_L_RAMB180_CLKARDCLK_DOUTADOUT[1])
+                                                      1.340     3.915 r  design_1_i/MultilayerPerceptron_0/inst/data1_U/ram_reg_bram_0/DOUTADOUT[1]
+                         net (fo=256, routed)         1.717     5.632    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U385/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/B[1]
+    DSP48E2_X0Y52        DSP_A_B_DATA                                 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U385/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST/B[1]
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_pl_0 rise edge)
+                                                      4.000     4.000 r  
+    PS8_X0Y0             PS8                          0.000     4.000 r  design_1_i/zynq_ultra_ps_e_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.181     4.181    design_1_i/zynq_ultra_ps_e_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y58        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.035     4.216 r  design_1_i/zynq_ultra_ps_e_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X0Y1 (CLOCK_ROOT)    net (fo=22060, routed)       1.976     6.192    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U385/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/CLK
+    DSP48E2_X0Y52        DSP_A_B_DATA                                 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U385/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST/CLK
+                         clock pessimism              0.120     6.312    
+                         clock uncertainty           -0.122     6.191    
+    DSP48E2_X0Y52        DSP_A_B_DATA (Setup_DSP_A_B_DATA_DSP48E2_CLK_B[1])
+                                                     -0.530     5.661    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U385/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST
+  -------------------------------------------------------------------
+                         required time                          5.661    
+                         arrival time                          -5.632    
+  -------------------------------------------------------------------
+                         slack                                  0.028    
+
+Slack (MET) :             0.029ns  (required time - arrival time)
+  Source:                 design_1_i/MultilayerPerceptron_0/inst/data1_U/ram_reg_bram_0/CLKARDCLK
+                            (rising edge-triggered cell RAMB18E2 clocked by clk_pl_0  {rise@0.000ns fall@2.000ns period=4.000ns})
+  Destination:            design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U325/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST/B[0]
+                            (rising edge-triggered cell DSP_A_B_DATA clocked by clk_pl_0  {rise@0.000ns fall@2.000ns period=4.000ns})
+  Path Group:             clk_pl_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            4.000ns  (clk_pl_0 rise@4.000ns - clk_pl_0 rise@0.000ns)
+  Data Path Delay:        3.039ns  (logic 1.398ns (45.996%)  route 1.641ns (54.004%))
+  Logic Levels:           0  
+  Clock Path Skew:        -0.283ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.169ns = ( 6.169 - 4.000 ) 
+    Source Clock Delay      (SCD):    2.575ns
+    Clock Pessimism Removal (CPR):    0.123ns
+  Clock Uncertainty:      0.122ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.233ns
+    Phase Error              (PE):    0.000ns
+  Clock Net Delay (Source):      2.308ns (routing 0.795ns, distribution 1.513ns)
+  Clock Net Delay (Destination): 1.953ns (routing 0.726ns, distribution 1.227ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_pl_0 rise edge)
+                                                      0.000     0.000 r  
+    PS8_X0Y0             PS8                          0.000     0.000 r  design_1_i/zynq_ultra_ps_e_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.229     0.229    design_1_i/zynq_ultra_ps_e_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y58        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.038     0.267 r  design_1_i/zynq_ultra_ps_e_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X0Y1 (CLOCK_ROOT)    net (fo=22060, routed)       2.308     2.575    design_1_i/MultilayerPerceptron_0/inst/data1_U/ap_clk
+    RAMB18_X2Y24         RAMB18E2                                     r  design_1_i/MultilayerPerceptron_0/inst/data1_U/ram_reg_bram_0/CLKARDCLK
+  -------------------------------------------------------------------    -------------------
+    RAMB18_X2Y24         RAMB18E2 (Prop_RAMB18E2_L_RAMB180_CLKARDCLK_DOUTADOUT[0])
+                                                      1.398     3.973 r  design_1_i/MultilayerPerceptron_0/inst/data1_U/ram_reg_bram_0/DOUTADOUT[0]
+                         net (fo=256, routed)         1.641     5.615    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U325/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/B[0]
+    DSP48E2_X1Y9         DSP_A_B_DATA                                 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U325/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST/B[0]
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_pl_0 rise edge)
+                                                      4.000     4.000 r  
+    PS8_X0Y0             PS8                          0.000     4.000 r  design_1_i/zynq_ultra_ps_e_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.181     4.181    design_1_i/zynq_ultra_ps_e_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y58        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.035     4.216 r  design_1_i/zynq_ultra_ps_e_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X0Y1 (CLOCK_ROOT)    net (fo=22060, routed)       1.953     6.169    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U325/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/CLK
+    DSP48E2_X1Y9         DSP_A_B_DATA                                 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U325/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST/CLK
+                         clock pessimism              0.123     6.292    
+                         clock uncertainty           -0.122     6.171    
+    DSP48E2_X1Y9         DSP_A_B_DATA (Setup_DSP_A_B_DATA_DSP48E2_CLK_B[0])
+                                                     -0.527     5.644    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U325/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST
+  -------------------------------------------------------------------
+                         required time                          5.644    
+                         arrival time                          -5.615    
+  -------------------------------------------------------------------
+                         slack                                  0.029    
+
+Slack (MET) :             0.037ns  (required time - arrival time)
+  Source:                 design_1_i/MultilayerPerceptron_0/inst/data1_U/ram_reg_bram_0/CLKARDCLK
+                            (rising edge-triggered cell RAMB18E2 clocked by clk_pl_0  {rise@0.000ns fall@2.000ns period=4.000ns})
+  Destination:            design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U253/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST/B[3]
+                            (rising edge-triggered cell DSP_A_B_DATA clocked by clk_pl_0  {rise@0.000ns fall@2.000ns period=4.000ns})
+  Path Group:             clk_pl_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            4.000ns  (clk_pl_0 rise@4.000ns - clk_pl_0 rise@0.000ns)
+  Data Path Delay:        3.050ns  (logic 1.324ns (43.407%)  route 1.726ns (56.593%))
+  Logic Levels:           0  
+  Clock Path Skew:        -0.261ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.194ns = ( 6.194 - 4.000 ) 
+    Source Clock Delay      (SCD):    2.575ns
+    Clock Pessimism Removal (CPR):    0.120ns
+  Clock Uncertainty:      0.122ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.233ns
+    Phase Error              (PE):    0.000ns
+  Clock Net Delay (Source):      2.308ns (routing 0.795ns, distribution 1.513ns)
+  Clock Net Delay (Destination): 1.978ns (routing 0.726ns, distribution 1.252ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_pl_0 rise edge)
+                                                      0.000     0.000 r  
+    PS8_X0Y0             PS8                          0.000     0.000 r  design_1_i/zynq_ultra_ps_e_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.229     0.229    design_1_i/zynq_ultra_ps_e_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y58        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.038     0.267 r  design_1_i/zynq_ultra_ps_e_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X0Y1 (CLOCK_ROOT)    net (fo=22060, routed)       2.308     2.575    design_1_i/MultilayerPerceptron_0/inst/data1_U/ap_clk
+    RAMB18_X2Y24         RAMB18E2                                     r  design_1_i/MultilayerPerceptron_0/inst/data1_U/ram_reg_bram_0/CLKARDCLK
+  -------------------------------------------------------------------    -------------------
+    RAMB18_X2Y24         RAMB18E2 (Prop_RAMB18E2_L_RAMB180_CLKARDCLK_DOUTADOUT[3])
+                                                      1.324     3.899 r  design_1_i/MultilayerPerceptron_0/inst/data1_U/ram_reg_bram_0/DOUTADOUT[3]
+                         net (fo=256, routed)         1.726     5.625    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U253/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/B[3]
+    DSP48E2_X0Y50        DSP_A_B_DATA                                 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U253/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST/B[3]
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_pl_0 rise edge)
+                                                      4.000     4.000 r  
+    PS8_X0Y0             PS8                          0.000     4.000 r  design_1_i/zynq_ultra_ps_e_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.181     4.181    design_1_i/zynq_ultra_ps_e_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y58        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.035     4.216 r  design_1_i/zynq_ultra_ps_e_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X0Y1 (CLOCK_ROOT)    net (fo=22060, routed)       1.978     6.194    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U253/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/CLK
+    DSP48E2_X0Y50        DSP_A_B_DATA                                 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U253/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST/CLK
+                         clock pessimism              0.120     6.314    
+                         clock uncertainty           -0.122     6.193    
+    DSP48E2_X0Y50        DSP_A_B_DATA (Setup_DSP_A_B_DATA_DSP48E2_CLK_B[3])
+                                                     -0.530     5.663    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U253/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST
+  -------------------------------------------------------------------
+                         required time                          5.663    
+                         arrival time                          -5.625    
+  -------------------------------------------------------------------
+                         slack                                  0.037    
+
+Slack (MET) :             0.039ns  (required time - arrival time)
+  Source:                 design_1_i/MultilayerPerceptron_0/inst/data1_U/ram_reg_bram_0/CLKARDCLK
+                            (rising edge-triggered cell RAMB18E2 clocked by clk_pl_0  {rise@0.000ns fall@2.000ns period=4.000ns})
+  Destination:            design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U369/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST/B[3]
+                            (rising edge-triggered cell DSP_A_B_DATA clocked by clk_pl_0  {rise@0.000ns fall@2.000ns period=4.000ns})
+  Path Group:             clk_pl_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            4.000ns  (clk_pl_0 rise@4.000ns - clk_pl_0 rise@0.000ns)
+  Data Path Delay:        3.038ns  (logic 1.324ns (43.575%)  route 1.714ns (56.425%))
+  Logic Levels:           0  
+  Clock Path Skew:        -0.271ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.129ns = ( 6.129 - 4.000 ) 
+    Source Clock Delay      (SCD):    2.575ns
+    Clock Pessimism Removal (CPR):    0.175ns
+  Clock Uncertainty:      0.122ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.233ns
+    Phase Error              (PE):    0.000ns
+  Clock Net Delay (Source):      2.308ns (routing 0.795ns, distribution 1.513ns)
+  Clock Net Delay (Destination): 1.913ns (routing 0.726ns, distribution 1.187ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_pl_0 rise edge)
+                                                      0.000     0.000 r  
+    PS8_X0Y0             PS8                          0.000     0.000 r  design_1_i/zynq_ultra_ps_e_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.229     0.229    design_1_i/zynq_ultra_ps_e_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y58        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.038     0.267 r  design_1_i/zynq_ultra_ps_e_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X0Y1 (CLOCK_ROOT)    net (fo=22060, routed)       2.308     2.575    design_1_i/MultilayerPerceptron_0/inst/data1_U/ap_clk
+    RAMB18_X2Y24         RAMB18E2                                     r  design_1_i/MultilayerPerceptron_0/inst/data1_U/ram_reg_bram_0/CLKARDCLK
+  -------------------------------------------------------------------    -------------------
+    RAMB18_X2Y24         RAMB18E2 (Prop_RAMB18E2_L_RAMB180_CLKARDCLK_DOUTADOUT[3])
+                                                      1.324     3.899 r  design_1_i/MultilayerPerceptron_0/inst/data1_U/ram_reg_bram_0/DOUTADOUT[3]
+                         net (fo=256, routed)         1.714     5.614    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U369/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/B[3]
+    DSP48E2_X0Y38        DSP_A_B_DATA                                 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U369/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST/B[3]
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_pl_0 rise edge)
+                                                      4.000     4.000 r  
+    PS8_X0Y0             PS8                          0.000     4.000 r  design_1_i/zynq_ultra_ps_e_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.181     4.181    design_1_i/zynq_ultra_ps_e_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y58        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.035     4.216 r  design_1_i/zynq_ultra_ps_e_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X0Y1 (CLOCK_ROOT)    net (fo=22060, routed)       1.913     6.129    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U369/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/CLK
+    DSP48E2_X0Y38        DSP_A_B_DATA                                 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U369/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST/CLK
+                         clock pessimism              0.175     6.304    
+                         clock uncertainty           -0.122     6.183    
+    DSP48E2_X0Y38        DSP_A_B_DATA (Setup_DSP_A_B_DATA_DSP48E2_CLK_B[3])
+                                                     -0.530     5.653    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U369/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST
+  -------------------------------------------------------------------
+                         required time                          5.653    
+                         arrival time                          -5.614    
+  -------------------------------------------------------------------
+                         slack                                  0.039    
+
+Slack (MET) :             0.039ns  (required time - arrival time)
+  Source:                 design_1_i/MultilayerPerceptron_0/inst/data1_U/ram_reg_bram_0/CLKARDCLK
+                            (rising edge-triggered cell RAMB18E2 clocked by clk_pl_0  {rise@0.000ns fall@2.000ns period=4.000ns})
+  Destination:            design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U269/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST/B[0]
+                            (rising edge-triggered cell DSP_A_B_DATA clocked by clk_pl_0  {rise@0.000ns fall@2.000ns period=4.000ns})
+  Path Group:             clk_pl_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            4.000ns  (clk_pl_0 rise@4.000ns - clk_pl_0 rise@0.000ns)
+  Data Path Delay:        3.215ns  (logic 1.398ns (43.484%)  route 1.817ns (56.516%))
+  Logic Levels:           0  
+  Clock Path Skew:        -0.097ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.358ns = ( 6.358 - 4.000 ) 
+    Source Clock Delay      (SCD):    2.575ns
+    Clock Pessimism Removal (CPR):    0.120ns
+  Clock Uncertainty:      0.122ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.233ns
+    Phase Error              (PE):    0.000ns
+  Clock Net Delay (Source):      2.308ns (routing 0.795ns, distribution 1.513ns)
+  Clock Net Delay (Destination): 2.142ns (routing 0.726ns, distribution 1.416ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_pl_0 rise edge)
+                                                      0.000     0.000 r  
+    PS8_X0Y0             PS8                          0.000     0.000 r  design_1_i/zynq_ultra_ps_e_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.229     0.229    design_1_i/zynq_ultra_ps_e_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y58        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.038     0.267 r  design_1_i/zynq_ultra_ps_e_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X0Y1 (CLOCK_ROOT)    net (fo=22060, routed)       2.308     2.575    design_1_i/MultilayerPerceptron_0/inst/data1_U/ap_clk
+    RAMB18_X2Y24         RAMB18E2                                     r  design_1_i/MultilayerPerceptron_0/inst/data1_U/ram_reg_bram_0/CLKARDCLK
+  -------------------------------------------------------------------    -------------------
+    RAMB18_X2Y24         RAMB18E2 (Prop_RAMB18E2_L_RAMB180_CLKARDCLK_DOUTADOUT[0])
+                                                      1.398     3.973 r  design_1_i/MultilayerPerceptron_0/inst/data1_U/ram_reg_bram_0/DOUTADOUT[0]
+                         net (fo=256, routed)         1.817     5.790    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U269/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/B[0]
+    DSP48E2_X3Y51        DSP_A_B_DATA                                 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U269/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST/B[0]
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_pl_0 rise edge)
+                                                      4.000     4.000 r  
+    PS8_X0Y0             PS8                          0.000     4.000 r  design_1_i/zynq_ultra_ps_e_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.181     4.181    design_1_i/zynq_ultra_ps_e_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y58        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.035     4.216 r  design_1_i/zynq_ultra_ps_e_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X0Y1 (CLOCK_ROOT)    net (fo=22060, routed)       2.142     6.358    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U269/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/CLK
+    DSP48E2_X3Y51        DSP_A_B_DATA                                 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U269/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST/CLK
+                         clock pessimism              0.120     6.478    
+                         clock uncertainty           -0.122     6.356    
+    DSP48E2_X3Y51        DSP_A_B_DATA (Setup_DSP_A_B_DATA_DSP48E2_CLK_B[0])
+                                                     -0.527     5.829    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U269/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST
+  -------------------------------------------------------------------
+                         required time                          5.829    
+                         arrival time                          -5.790    
+  -------------------------------------------------------------------
+                         slack                                  0.039    
+
+Slack (MET) :             0.043ns  (required time - arrival time)
+  Source:                 design_1_i/MultilayerPerceptron_0/inst/data1_U/ram_reg_bram_0/CLKARDCLK
+                            (rising edge-triggered cell RAMB18E2 clocked by clk_pl_0  {rise@0.000ns fall@2.000ns period=4.000ns})
+  Destination:            design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U286/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST/B[5]
+                            (rising edge-triggered cell DSP_A_B_DATA clocked by clk_pl_0  {rise@0.000ns fall@2.000ns period=4.000ns})
+  Path Group:             clk_pl_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            4.000ns  (clk_pl_0 rise@4.000ns - clk_pl_0 rise@0.000ns)
+  Data Path Delay:        3.256ns  (logic 1.283ns (39.403%)  route 1.973ns (60.597%))
+  Logic Levels:           0  
+  Clock Path Skew:        -0.071ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.326ns = ( 6.326 - 4.000 ) 
+    Source Clock Delay      (SCD):    2.575ns
+    Clock Pessimism Removal (CPR):    0.178ns
+  Clock Uncertainty:      0.122ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.233ns
+    Phase Error              (PE):    0.000ns
+  Clock Net Delay (Source):      2.308ns (routing 0.795ns, distribution 1.513ns)
+  Clock Net Delay (Destination): 2.110ns (routing 0.726ns, distribution 1.384ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_pl_0 rise edge)
+                                                      0.000     0.000 r  
+    PS8_X0Y0             PS8                          0.000     0.000 r  design_1_i/zynq_ultra_ps_e_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.229     0.229    design_1_i/zynq_ultra_ps_e_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y58        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.038     0.267 r  design_1_i/zynq_ultra_ps_e_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X0Y1 (CLOCK_ROOT)    net (fo=22060, routed)       2.308     2.575    design_1_i/MultilayerPerceptron_0/inst/data1_U/ap_clk
+    RAMB18_X2Y24         RAMB18E2                                     r  design_1_i/MultilayerPerceptron_0/inst/data1_U/ram_reg_bram_0/CLKARDCLK
+  -------------------------------------------------------------------    -------------------
+    RAMB18_X2Y24         RAMB18E2 (Prop_RAMB18E2_L_RAMB180_CLKARDCLK_DOUTADOUT[5])
+                                                      1.283     3.858 r  design_1_i/MultilayerPerceptron_0/inst/data1_U/ram_reg_bram_0/DOUTADOUT[5]
+                         net (fo=256, routed)         1.973     5.831    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U286/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/B[5]
+    DSP48E2_X4Y46        DSP_A_B_DATA                                 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U286/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST/B[5]
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_pl_0 rise edge)
+                                                      4.000     4.000 r  
+    PS8_X0Y0             PS8                          0.000     4.000 r  design_1_i/zynq_ultra_ps_e_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.181     4.181    design_1_i/zynq_ultra_ps_e_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y58        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.035     4.216 r  design_1_i/zynq_ultra_ps_e_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X0Y1 (CLOCK_ROOT)    net (fo=22060, routed)       2.110     6.326    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U286/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/CLK
+    DSP48E2_X4Y46        DSP_A_B_DATA                                 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U286/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST/CLK
+                         clock pessimism              0.178     6.504    
+                         clock uncertainty           -0.122     6.382    
+    DSP48E2_X4Y46        DSP_A_B_DATA (Setup_DSP_A_B_DATA_DSP48E2_CLK_B[5])
+                                                     -0.508     5.874    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_1_fu_159/grp_FullyConnectedLayer_1_Pipeline_VITIS_LOOP_38_2_fu_770/mac_muladd_8s_7ns_16s_16_4_1_U286/MultilayerPerceptron_mac_muladd_8s_7ns_16s_16_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST
+  -------------------------------------------------------------------
+                         required time                          5.874    
+                         arrival time                          -5.831    
+  -------------------------------------------------------------------
+                         slack                                  0.043    
+
+
+
+

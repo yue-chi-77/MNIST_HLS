@@ -1,0 +1,845 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version      : Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
+| Date              : Sun Aug  2 13:17:55 2026
+| Host              : ntk-System-Product-Name running 64-bit Ubuntu 22.04.5 LTS
+| Command           : report_timing -delay_type max -max_paths 10 -nworst 1 -file /media/ntk/sda4/yuechi/mnist_hls_v2/results/expA_300mhz/timing_worst.rpt
+| Design            : design_1_wrapper
+| Device            : xck24-ubva530
+| Speed File        : -2LV  PRODUCTION 1.30 05-15-2022
+| Design State      : Routed
+| Temperature Grade : C
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Timing Report
+
+Slack (VIOLATED) :        -0.276ns  (required time - arrival time)
+  Source:                 design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/q0_reg_9/CLKARDCLK
+                            (rising edge-triggered cell RAMB36E2 clocked by clk_pl_0  {rise@0.000ns fall@1.666ns period=3.333ns})
+  Destination:            design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/prev_fu_1094_reg[655]/D
+                            (rising edge-triggered cell FDRE clocked by clk_pl_0  {rise@0.000ns fall@1.666ns period=3.333ns})
+  Path Group:             clk_pl_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            3.333ns  (clk_pl_0 rise@3.333ns - clk_pl_0 rise@0.000ns)
+  Data Path Delay:        3.396ns  (logic 1.675ns (49.329%)  route 1.721ns (50.671%))
+  Logic Levels:           10  (CARRY8=5 LUT3=2 LUT4=1 LUT6=2)
+  Clock Path Skew:        -0.154ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.375ns = ( 5.708 - 3.333 ) 
+    Source Clock Delay      (SCD):    2.708ns
+    Clock Pessimism Removal (CPR):    0.179ns
+  Clock Uncertainty:      0.104ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.195ns
+    Phase Error              (PE):    0.000ns
+  Clock Net Delay (Source):      2.441ns (routing 0.795ns, distribution 1.646ns)
+  Clock Net Delay (Destination): 2.159ns (routing 0.726ns, distribution 1.433ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_pl_0 rise edge)
+                                                      0.000     0.000 r  
+    PS8_X0Y0             PS8                          0.000     0.000 r  design_1_i/zynq_ultra_ps_e_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.229     0.229    design_1_i/zynq_ultra_ps_e_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y58        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.038     0.267 r  design_1_i/zynq_ultra_ps_e_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X0Y1 (CLOCK_ROOT)    net (fo=22236, routed)       2.441     2.708    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/ap_clk
+    RAMB36_X4Y14         RAMB36E2                                     r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/q0_reg_9/CLKARDCLK
+  -------------------------------------------------------------------    -------------------
+    RAMB36_X4Y14         RAMB36E2 (Prop_RAMB36E2_RAMB36_CLKARDCLK_DOUTADOUT[0])
+                                                      0.305     3.013 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/q0_reg_9/DOUTADOUT[0]
+                         net (fo=17, routed)          0.539     3.552    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U41/out[4]
+    SLICE_X37Y82         LUT6 (Prop_G6LUT_SLICEM_I5_O)
+                                                      0.057     3.609 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U41/prev_fu_1094[647]_i_37/O
+                         net (fo=2, routed)           0.107     3.716    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/prev_fu_1094_reg[647]_i_19[1]
+    SLICE_X37Y83         LUT6 (Prop_F6LUT_SLICEM_I0_O)
+                                                      0.149     3.865 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/prev_fu_1094[647]_i_44/O
+                         net (fo=1, routed)           0.029     3.894    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U41/S[5]
+    SLICE_X37Y83         CARRY8 (Prop_CARRY8_SLICEM_S[5]_CO[7])
+                                                      0.238     4.132 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U41/prev_fu_1094_reg[647]_i_19/CO[7]
+                         net (fo=1, routed)           0.030     4.162    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U41/prev_fu_1094_reg[647]_i_19_n_0
+    SLICE_X37Y84         CARRY8 (Prop_CARRY8_SLICEM_CI_O[0])
+                                                      0.078     4.240 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U41/prev_fu_1094_reg[655]_i_45/O[0]
+                         net (fo=2, routed)           0.488     4.728    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U41/prev_fu_1094_reg[655]_i_45_n_15
+    SLICE_X38Y85         LUT3 (Prop_H6LUT_SLICEL_I2_O)
+                                                      0.083     4.811 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U41/prev_fu_1094[655]_i_27/O
+                         net (fo=2, routed)           0.103     4.914    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U41/prev_fu_1094[655]_i_27_n_0
+    SLICE_X38Y84         LUT4 (Prop_F6LUT_SLICEL_I3_O)
+                                                      0.150     5.064 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U41/prev_fu_1094[655]_i_35/O
+                         net (fo=1, routed)           0.015     5.079    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U41/prev_fu_1094[655]_i_35_n_0
+    SLICE_X38Y84         CARRY8 (Prop_CARRY8_SLICEL_S[5]_CO[7])
+                                                      0.232     5.311 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U41/prev_fu_1094_reg[655]_i_18/CO[7]
+                         net (fo=1, routed)           0.030     5.341    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U41/prev_fu_1094_reg[655]_i_18_n_0
+    SLICE_X38Y85         CARRY8 (Prop_CARRY8_SLICEL_CI_O[1])
+                                                      0.106     5.447 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U41/prev_fu_1094_reg[655]_i_17/O[1]
+                         net (fo=1, routed)           0.317     5.764    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/product_40_fu_3469_p2[13]
+    SLICE_X40Y84         LUT3 (Prop_F6LUT_SLICEM_I2_O)
+                                                      0.080     5.844 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/prev_fu_1094[655]_i_11/O
+                         net (fo=1, routed)           0.029     5.873    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/prev_fu_1094[655]_i_11_n_0
+    SLICE_X40Y84         CARRY8 (Prop_CARRY8_SLICEM_S[5]_O[7])
+                                                      0.197     6.070 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/prev_fu_1094_reg[655]_i_1/O[7]
+                         net (fo=1, routed)           0.034     6.104    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/add_ln97_40_fu_3485_p2[15]
+    SLICE_X40Y84         FDRE                                         r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/prev_fu_1094_reg[655]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_pl_0 rise edge)
+                                                      3.333     3.333 r  
+    PS8_X0Y0             PS8                          0.000     3.333 r  design_1_i/zynq_ultra_ps_e_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.181     3.514    design_1_i/zynq_ultra_ps_e_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y58        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.035     3.549 r  design_1_i/zynq_ultra_ps_e_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X0Y1 (CLOCK_ROOT)    net (fo=22236, routed)       2.159     5.708    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/ap_clk
+    SLICE_X40Y84         FDRE                                         r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/prev_fu_1094_reg[655]/C
+                         clock pessimism              0.179     5.887    
+                         clock uncertainty           -0.104     5.784    
+    SLICE_X40Y84         FDRE (Setup_HFF_SLICEM_C_D)
+                                                      0.044     5.828    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/prev_fu_1094_reg[655]
+  -------------------------------------------------------------------
+                         required time                          5.828    
+                         arrival time                          -6.104    
+  -------------------------------------------------------------------
+                         slack                                 -0.276    
+
+Slack (VIOLATED) :        -0.275ns  (required time - arrival time)
+  Source:                 design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/q0_reg_19/CLKARDCLK
+                            (rising edge-triggered cell RAMB36E2 clocked by clk_pl_0  {rise@0.000ns fall@1.666ns period=3.333ns})
+  Destination:            design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/prev_fu_1094_reg[1423]/D
+                            (rising edge-triggered cell FDRE clocked by clk_pl_0  {rise@0.000ns fall@1.666ns period=3.333ns})
+  Path Group:             clk_pl_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            3.333ns  (clk_pl_0 rise@3.333ns - clk_pl_0 rise@0.000ns)
+  Data Path Delay:        3.261ns  (logic 1.789ns (54.865%)  route 1.472ns (45.136%))
+  Logic Levels:           10  (CARRY8=5 LUT3=2 LUT4=1 LUT6=2)
+  Clock Path Skew:        -0.288ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.162ns = ( 5.495 - 3.333 ) 
+    Source Clock Delay      (SCD):    2.618ns
+    Clock Pessimism Removal (CPR):    0.168ns
+  Clock Uncertainty:      0.104ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.195ns
+    Phase Error              (PE):    0.000ns
+  Clock Net Delay (Source):      2.351ns (routing 0.795ns, distribution 1.556ns)
+  Clock Net Delay (Destination): 1.946ns (routing 0.726ns, distribution 1.220ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_pl_0 rise edge)
+                                                      0.000     0.000 r  
+    PS8_X0Y0             PS8                          0.000     0.000 r  design_1_i/zynq_ultra_ps_e_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.229     0.229    design_1_i/zynq_ultra_ps_e_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y58        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.038     0.267 r  design_1_i/zynq_ultra_ps_e_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X0Y1 (CLOCK_ROOT)    net (fo=22236, routed)       2.351     2.618    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/ap_clk
+    RAMB36_X3Y7          RAMB36E2                                     r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/q0_reg_19/CLKARDCLK
+  -------------------------------------------------------------------    -------------------
+    RAMB36_X3Y7          RAMB36E2 (Prop_RAMB36E2_RAMB36_CLKARDCLK_DOUTADOUT[22])
+                                                      0.304     2.922 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/q0_reg_19/DOUTADOUT[22]
+                         net (fo=16, routed)          0.439     3.361    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U89/out[2]
+    SLICE_X31Y42         LUT6 (Prop_H6LUT_SLICEM_I1_O)
+                                                      0.228     3.589 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U89/prev_fu_1094[1415]_i_37/O
+                         net (fo=2, routed)           0.160     3.749    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/prev_fu_1094_reg[1415]_i_19[1]
+    SLICE_X29Y42         LUT6 (Prop_F6LUT_SLICEM_I0_O)
+                                                      0.056     3.805 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/prev_fu_1094[1415]_i_44/O
+                         net (fo=1, routed)           0.029     3.834    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U89/S[5]
+    SLICE_X29Y42         CARRY8 (Prop_CARRY8_SLICEM_S[5]_CO[7])
+                                                      0.238     4.072 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U89/prev_fu_1094_reg[1415]_i_19/CO[7]
+                         net (fo=1, routed)           0.030     4.102    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U89/prev_fu_1094_reg[1415]_i_19_n_0
+    SLICE_X29Y43         CARRY8 (Prop_CARRY8_SLICEM_CI_O[0])
+                                                      0.078     4.180 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U89/prev_fu_1094_reg[1423]_i_45/O[0]
+                         net (fo=2, routed)           0.218     4.398    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U89/prev_fu_1094_reg[1423]_i_45_n_15
+    SLICE_X31Y42         LUT3 (Prop_C6LUT_SLICEM_I2_O)
+                                                      0.080     4.478 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U89/prev_fu_1094[1423]_i_27/O
+                         net (fo=2, routed)           0.219     4.697    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U89/prev_fu_1094[1423]_i_27_n_0
+    SLICE_X28Y40         LUT4 (Prop_F6LUT_SLICEM_I3_O)
+                                                      0.186     4.883 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U89/prev_fu_1094[1423]_i_35/O
+                         net (fo=1, routed)           0.029     4.912    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U89/prev_fu_1094[1423]_i_35_n_0
+    SLICE_X28Y40         CARRY8 (Prop_CARRY8_SLICEM_S[5]_CO[7])
+                                                      0.238     5.150 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U89/prev_fu_1094_reg[1423]_i_18/CO[7]
+                         net (fo=1, routed)           0.030     5.180    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U89/prev_fu_1094_reg[1423]_i_18_n_0
+    SLICE_X28Y41         CARRY8 (Prop_CARRY8_SLICEM_CI_O[1])
+                                                      0.106     5.286 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U89/prev_fu_1094_reg[1423]_i_17/O[1]
+                         net (fo=1, routed)           0.269     5.555    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/product_88_fu_4669_p2[13]
+    SLICE_X27Y43         LUT3 (Prop_F6LUT_SLICEL_I2_O)
+                                                      0.081     5.636 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/prev_fu_1094[1423]_i_11/O
+                         net (fo=1, routed)           0.015     5.651    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/prev_fu_1094[1423]_i_11_n_0
+    SLICE_X27Y43         CARRY8 (Prop_CARRY8_SLICEL_S[5]_O[7])
+                                                      0.194     5.845 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/prev_fu_1094_reg[1423]_i_1/O[7]
+                         net (fo=1, routed)           0.034     5.879    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/add_ln97_88_fu_4685_p2[15]
+    SLICE_X27Y43         FDRE                                         r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/prev_fu_1094_reg[1423]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_pl_0 rise edge)
+                                                      3.333     3.333 r  
+    PS8_X0Y0             PS8                          0.000     3.333 r  design_1_i/zynq_ultra_ps_e_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.181     3.514    design_1_i/zynq_ultra_ps_e_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y58        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.035     3.549 r  design_1_i/zynq_ultra_ps_e_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X0Y1 (CLOCK_ROOT)    net (fo=22236, routed)       1.946     5.495    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/ap_clk
+    SLICE_X27Y43         FDRE                                         r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/prev_fu_1094_reg[1423]/C
+                         clock pessimism              0.168     5.663    
+                         clock uncertainty           -0.104     5.560    
+    SLICE_X27Y43         FDRE (Setup_HFF_SLICEL_C_D)
+                                                      0.044     5.604    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/prev_fu_1094_reg[1423]
+  -------------------------------------------------------------------
+                         required time                          5.604    
+                         arrival time                          -5.879    
+  -------------------------------------------------------------------
+                         slack                                 -0.275    
+
+Slack (VIOLATED) :        -0.273ns  (required time - arrival time)
+  Source:                 design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/q0_reg_24/CLKARDCLK
+                            (rising edge-triggered cell RAMB36E2 clocked by clk_pl_0  {rise@0.000ns fall@1.666ns period=3.333ns})
+  Destination:            design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/prev_fu_1094_reg[1807]/D
+                            (rising edge-triggered cell FDRE clocked by clk_pl_0  {rise@0.000ns fall@1.666ns period=3.333ns})
+  Path Group:             clk_pl_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            3.333ns  (clk_pl_0 rise@3.333ns - clk_pl_0 rise@0.000ns)
+  Data Path Delay:        3.319ns  (logic 1.375ns (41.427%)  route 1.944ns (58.573%))
+  Logic Levels:           7  (CARRY8=4 LUT2=1 LUT3=1 LUT6=1)
+  Clock Path Skew:        -0.228ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.129ns = ( 5.462 - 3.333 ) 
+    Source Clock Delay      (SCD):    2.525ns
+    Clock Pessimism Removal (CPR):    0.168ns
+  Clock Uncertainty:      0.104ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.195ns
+    Phase Error              (PE):    0.000ns
+  Clock Net Delay (Source):      2.258ns (routing 0.795ns, distribution 1.463ns)
+  Clock Net Delay (Destination): 1.913ns (routing 0.726ns, distribution 1.187ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_pl_0 rise edge)
+                                                      0.000     0.000 r  
+    PS8_X0Y0             PS8                          0.000     0.000 r  design_1_i/zynq_ultra_ps_e_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.229     0.229    design_1_i/zynq_ultra_ps_e_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y58        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.038     0.267 r  design_1_i/zynq_ultra_ps_e_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X0Y1 (CLOCK_ROOT)    net (fo=22236, routed)       2.258     2.525    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/ap_clk
+    RAMB36_X2Y9          RAMB36E2                                     r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/q0_reg_24/CLKARDCLK
+  -------------------------------------------------------------------    -------------------
+    RAMB36_X2Y9          RAMB36E2 (Prop_RAMB36E2_RAMB36_CLKARDCLK_DOUTPADOUTP[1])
+                                                      0.303     2.828 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/q0_reg_24/DOUTPADOUTP[1]
+                         net (fo=19, routed)          0.681     3.509    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U113/out[1]
+    SLICE_X12Y48         LUT6 (Prop_E6LUT_SLICEL_I3_O)
+                                                      0.152     3.661 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U113/prev_fu_1094[1799]_i_17/O
+                         net (fo=1, routed)           0.109     3.770    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U113/prev_fu_1094[1799]_i_17_n_0
+    SLICE_X12Y49         CARRY8 (Prop_CARRY8_SLICEL_DI[3]_O[5])
+                                                      0.260     4.030 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U113/prev_fu_1094_reg[1799]_i_3/O[5]
+                         net (fo=2, routed)           0.368     4.398    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U113/prev_fu_1094_reg[1799]_i_3_n_10
+    SLICE_X14Y48         LUT2 (Prop_B5LUT_SLICEM_I1_O)
+                                                      0.097     4.495 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U113/prev_fu_1094[1807]_i_23/O
+                         net (fo=2, routed)           0.363     4.858    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U113/prev_fu_1094[1807]_i_23_n_0
+    SLICE_X14Y48         CARRY8 (Prop_CARRY8_SLICEM_DI[2]_O[3])
+                                                      0.133     4.991 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U113/prev_fu_1094_reg[1807]_i_3/O[3]
+                         net (fo=2, routed)           0.338     5.329    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U113/product_112_fu_5269_p2[7]
+    SLICE_X14Y46         LUT3 (Prop_H6LUT_SLICEM_I2_O)
+                                                      0.084     5.413 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U113/prev_fu_1094[1799]_i_4/O
+                         net (fo=1, routed)           0.021     5.434    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U113/prev_fu_1094[1799]_i_4_n_0
+    SLICE_X14Y46         CARRY8 (Prop_CARRY8_SLICEM_S[7]_CO[7])
+                                                      0.175     5.609 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U113/prev_fu_1094_reg[1799]_i_1/CO[7]
+                         net (fo=1, routed)           0.030     5.639    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U113/prev_fu_1094_reg[1799]_i_1_n_0
+    SLICE_X14Y47         CARRY8 (Prop_CARRY8_SLICEM_CI_O[7])
+                                                      0.171     5.810 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U113/prev_fu_1094_reg[1807]_i_1/O[7]
+                         net (fo=1, routed)           0.034     5.844    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/add_ln97_112_fu_5285_p2[15]
+    SLICE_X14Y47         FDRE                                         r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/prev_fu_1094_reg[1807]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_pl_0 rise edge)
+                                                      3.333     3.333 r  
+    PS8_X0Y0             PS8                          0.000     3.333 r  design_1_i/zynq_ultra_ps_e_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.181     3.514    design_1_i/zynq_ultra_ps_e_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y58        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.035     3.549 r  design_1_i/zynq_ultra_ps_e_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X0Y1 (CLOCK_ROOT)    net (fo=22236, routed)       1.913     5.462    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/ap_clk
+    SLICE_X14Y47         FDRE                                         r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/prev_fu_1094_reg[1807]/C
+                         clock pessimism              0.168     5.630    
+                         clock uncertainty           -0.104     5.527    
+    SLICE_X14Y47         FDRE (Setup_HFF_SLICEM_C_D)
+                                                      0.044     5.571    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/prev_fu_1094_reg[1807]
+  -------------------------------------------------------------------
+                         required time                          5.571    
+                         arrival time                          -5.844    
+  -------------------------------------------------------------------
+                         slack                                 -0.273    
+
+Slack (VIOLATED) :        -0.273ns  (required time - arrival time)
+  Source:                 design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/q0_reg_22/CLKARDCLK
+                            (rising edge-triggered cell RAMB36E2 clocked by clk_pl_0  {rise@0.000ns fall@1.666ns period=3.333ns})
+  Destination:            design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/prev_fu_1094_reg[1599]/D
+                            (rising edge-triggered cell FDRE clocked by clk_pl_0  {rise@0.000ns fall@1.666ns period=3.333ns})
+  Path Group:             clk_pl_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            3.333ns  (clk_pl_0 rise@3.333ns - clk_pl_0 rise@0.000ns)
+  Data Path Delay:        3.316ns  (logic 1.549ns (46.709%)  route 1.767ns (53.291%))
+  Logic Levels:           9  (CARRY8=4 LUT3=2 LUT4=1 LUT6=2)
+  Clock Path Skew:        -0.230ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.137ns = ( 5.470 - 3.333 ) 
+    Source Clock Delay      (SCD):    2.536ns
+    Clock Pessimism Removal (CPR):    0.168ns
+  Clock Uncertainty:      0.104ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.195ns
+    Phase Error              (PE):    0.000ns
+  Clock Net Delay (Source):      2.269ns (routing 0.795ns, distribution 1.474ns)
+  Clock Net Delay (Destination): 1.921ns (routing 0.726ns, distribution 1.195ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_pl_0 rise edge)
+                                                      0.000     0.000 r  
+    PS8_X0Y0             PS8                          0.000     0.000 r  design_1_i/zynq_ultra_ps_e_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.229     0.229    design_1_i/zynq_ultra_ps_e_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y58        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.038     0.267 r  design_1_i/zynq_ultra_ps_e_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X0Y1 (CLOCK_ROOT)    net (fo=22236, routed)       2.269     2.536    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/ap_clk
+    RAMB36_X2Y6          RAMB36E2                                     r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/q0_reg_22/CLKARDCLK
+  -------------------------------------------------------------------    -------------------
+    RAMB36_X2Y6          RAMB36E2 (Prop_RAMB36E2_RAMB36_CLKARDCLK_DOUTADOUT[3])
+                                                      0.298     2.834 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/q0_reg_22/DOUTADOUT[3]
+                         net (fo=19, routed)          0.426     3.260    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U100/out[3]
+    SLICE_X16Y30         LUT6 (Prop_E6LUT_SLICEM_I3_O)
+                                                      0.187     3.447 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U100/prev_fu_1094[1591]_i_30/O
+                         net (fo=2, routed)           0.391     3.838    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/prev_fu_1094_reg[1591]_i_12[1]
+    SLICE_X14Y36         LUT6 (Prop_F6LUT_SLICEM_I0_O)
+                                                      0.056     3.894 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/prev_fu_1094[1591]_i_37/O
+                         net (fo=1, routed)           0.029     3.923    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U100/prev_fu_1094[1591]_i_8_0[5]
+    SLICE_X14Y36         CARRY8 (Prop_CARRY8_SLICEM_S[5]_O[6])
+                                                      0.186     4.109 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U100/prev_fu_1094_reg[1591]_i_12/O[6]
+                         net (fo=2, routed)           0.398     4.507    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U100/prev_fu_1094_reg[1591]_i_12_n_9
+    SLICE_X15Y37         LUT3 (Prop_G6LUT_SLICEL_I1_O)
+                                                      0.151     4.658 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U100/prev_fu_1094[1599]_i_19/O
+                         net (fo=2, routed)           0.106     4.764    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U100/prev_fu_1094[1599]_i_19_n_0
+    SLICE_X15Y36         LUT4 (Prop_G6LUT_SLICEL_I0_O)
+                                                      0.137     4.901 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U100/prev_fu_1094[1599]_i_27/O
+                         net (fo=1, routed)           0.012     4.913    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U100/prev_fu_1094[1599]_i_27_n_0
+    SLICE_X15Y36         CARRY8 (Prop_CARRY8_SLICEL_S[6]_CO[7])
+                                                      0.171     5.084 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U100/prev_fu_1094_reg[1599]_i_3/CO[7]
+                         net (fo=1, routed)           0.030     5.114    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U100/prev_fu_1094_reg[1599]_i_3_n_0
+    SLICE_X15Y37         CARRY8 (Prop_CARRY8_SLICEL_CI_O[0])
+                                                      0.078     5.192 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U100/prev_fu_1094_reg[1599]_i_2/O[0]
+                         net (fo=2, routed)           0.323     5.515    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/prev_fu_1094_reg[1599]_0[0]
+    SLICE_X16Y37         LUT3 (Prop_E6LUT_SLICEM_I2_O)
+                                                      0.083     5.598 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/prev_fu_1094[1599]_i_7/O
+                         net (fo=1, routed)           0.018     5.616    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U100/S[0]
+    SLICE_X16Y37         CARRY8 (Prop_CARRY8_SLICEM_S[4]_O[7])
+                                                      0.202     5.818 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U100/prev_fu_1094_reg[1599]_i_1/O[7]
+                         net (fo=1, routed)           0.034     5.852    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/add_ln97_99_fu_4960_p2[15]
+    SLICE_X16Y37         FDRE                                         r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/prev_fu_1094_reg[1599]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_pl_0 rise edge)
+                                                      3.333     3.333 r  
+    PS8_X0Y0             PS8                          0.000     3.333 r  design_1_i/zynq_ultra_ps_e_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.181     3.514    design_1_i/zynq_ultra_ps_e_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y58        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.035     3.549 r  design_1_i/zynq_ultra_ps_e_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X0Y1 (CLOCK_ROOT)    net (fo=22236, routed)       1.921     5.470    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/ap_clk
+    SLICE_X16Y37         FDRE                                         r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/prev_fu_1094_reg[1599]/C
+                         clock pessimism              0.168     5.638    
+                         clock uncertainty           -0.104     5.535    
+    SLICE_X16Y37         FDRE (Setup_HFF_SLICEM_C_D)
+                                                      0.044     5.579    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/prev_fu_1094_reg[1599]
+  -------------------------------------------------------------------
+                         required time                          5.579    
+                         arrival time                          -5.852    
+  -------------------------------------------------------------------
+                         slack                                 -0.273    
+
+Slack (VIOLATED) :        -0.270ns  (required time - arrival time)
+  Source:                 design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/q0_reg_2/CLKARDCLK
+                            (rising edge-triggered cell RAMB36E2 clocked by clk_pl_0  {rise@0.000ns fall@1.666ns period=3.333ns})
+  Destination:            design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/prev_fu_1094_reg[191]/D
+                            (rising edge-triggered cell FDRE clocked by clk_pl_0  {rise@0.000ns fall@1.666ns period=3.333ns})
+  Path Group:             clk_pl_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            3.333ns  (clk_pl_0 rise@3.333ns - clk_pl_0 rise@0.000ns)
+  Data Path Delay:        3.295ns  (logic 1.758ns (53.346%)  route 1.537ns (46.654%))
+  Logic Levels:           9  (CARRY8=4 LUT2=1 LUT3=2 LUT4=1 LUT6=1)
+  Clock Path Skew:        -0.248ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.134ns = ( 5.467 - 3.333 ) 
+    Source Clock Delay      (SCD):    2.556ns
+    Clock Pessimism Removal (CPR):    0.175ns
+  Clock Uncertainty:      0.104ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.195ns
+    Phase Error              (PE):    0.000ns
+  Clock Net Delay (Source):      2.289ns (routing 0.795ns, distribution 1.494ns)
+  Clock Net Delay (Destination): 1.918ns (routing 0.726ns, distribution 1.192ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_pl_0 rise edge)
+                                                      0.000     0.000 r  
+    PS8_X0Y0             PS8                          0.000     0.000 r  design_1_i/zynq_ultra_ps_e_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.229     0.229    design_1_i/zynq_ultra_ps_e_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y58        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.038     0.267 r  design_1_i/zynq_ultra_ps_e_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X0Y1 (CLOCK_ROOT)    net (fo=22236, routed)       2.289     2.556    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/ap_clk
+    RAMB36_X1Y15         RAMB36E2                                     r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/q0_reg_2/CLKARDCLK
+  -------------------------------------------------------------------    -------------------
+    RAMB36_X1Y15         RAMB36E2 (Prop_RAMB36E2_RAMB36_CLKARDCLK_DOUTADOUT[19])
+                                                      0.299     2.855 f  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/q0_reg_2/DOUTADOUT[19]
+                         net (fo=19, routed)          0.489     3.344    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U12/out[3]
+    SLICE_X9Y73          LUT2 (Prop_E5LUT_SLICEM_I0_O)
+                                                      0.095     3.439 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U12/prev_fu_1094[183]_i_47/O
+                         net (fo=1, routed)           0.151     3.590    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/prev_fu_1094_reg[183]_i_3_1
+    SLICE_X9Y72          LUT6 (Prop_D6LUT_SLICEM_I1_O)
+                                                      0.185     3.775 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/prev_fu_1094[183]_i_24/O
+                         net (fo=1, routed)           0.032     3.807    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U12/prev_fu_1094_reg[183]_0[3]
+    SLICE_X9Y72          CARRY8 (Prop_CARRY8_SLICEM_S[3]_O[6])
+                                                      0.245     4.052 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U12/prev_fu_1094_reg[183]_i_3/O[6]
+                         net (fo=2, routed)           0.166     4.218    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U12/prev_fu_1094_reg[183]_i_3_n_9
+    SLICE_X8Y72          LUT3 (Prop_C5LUT_SLICEL_I2_O)
+                                                      0.219     4.437 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U12/prev_fu_1094[191]_i_22/O
+                         net (fo=2, routed)           0.143     4.580    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U12/prev_fu_1094[191]_i_22_n_0
+    SLICE_X8Y72          LUT4 (Prop_D6LUT_SLICEL_I3_O)
+                                                      0.152     4.732 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U12/prev_fu_1094[191]_i_30/O
+                         net (fo=1, routed)           0.013     4.745    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U12/prev_fu_1094[191]_i_30_n_0
+    SLICE_X8Y72          CARRY8 (Prop_CARRY8_SLICEL_S[3]_O[3])
+                                                      0.079     4.824 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U12/prev_fu_1094_reg[191]_i_3/O[3]
+                         net (fo=2, routed)           0.458     5.283    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U12/product_11_fu_2744_p2[7]
+    SLICE_X9Y74          LUT3 (Prop_H6LUT_SLICEM_I2_O)
+                                                      0.138     5.421 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U12/prev_fu_1094[183]_i_4/O
+                         net (fo=1, routed)           0.021     5.442    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U12/prev_fu_1094[183]_i_4_n_0
+    SLICE_X9Y74          CARRY8 (Prop_CARRY8_SLICEM_S[7]_CO[7])
+                                                      0.175     5.617 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U12/prev_fu_1094_reg[183]_i_1/CO[7]
+                         net (fo=1, routed)           0.030     5.647    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U12/prev_fu_1094_reg[183]_i_1_n_0
+    SLICE_X9Y75          CARRY8 (Prop_CARRY8_SLICEM_CI_O[7])
+                                                      0.171     5.818 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U12/prev_fu_1094_reg[191]_i_1/O[7]
+                         net (fo=1, routed)           0.034     5.852    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/add_ln97_11_fu_2760_p2[15]
+    SLICE_X9Y75          FDRE                                         r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/prev_fu_1094_reg[191]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_pl_0 rise edge)
+                                                      3.333     3.333 r  
+    PS8_X0Y0             PS8                          0.000     3.333 r  design_1_i/zynq_ultra_ps_e_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.181     3.514    design_1_i/zynq_ultra_ps_e_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y58        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.035     3.549 r  design_1_i/zynq_ultra_ps_e_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X0Y1 (CLOCK_ROOT)    net (fo=22236, routed)       1.918     5.467    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/ap_clk
+    SLICE_X9Y75          FDRE                                         r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/prev_fu_1094_reg[191]/C
+                         clock pessimism              0.175     5.642    
+                         clock uncertainty           -0.104     5.538    
+    SLICE_X9Y75          FDRE (Setup_HFF_SLICEM_C_D)
+                                                      0.044     5.582    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/prev_fu_1094_reg[191]
+  -------------------------------------------------------------------
+                         required time                          5.582    
+                         arrival time                          -5.852    
+  -------------------------------------------------------------------
+                         slack                                 -0.270    
+
+Slack (VIOLATED) :        -0.267ns  (required time - arrival time)
+  Source:                 design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/q0_reg_18/CLKARDCLK
+                            (rising edge-triggered cell RAMB36E2 clocked by clk_pl_0  {rise@0.000ns fall@1.666ns period=3.333ns})
+  Destination:            design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/prev_fu_1094_reg[1311]/D
+                            (rising edge-triggered cell FDRE clocked by clk_pl_0  {rise@0.000ns fall@1.666ns period=3.333ns})
+  Path Group:             clk_pl_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            3.333ns  (clk_pl_0 rise@3.333ns - clk_pl_0 rise@0.000ns)
+  Data Path Delay:        3.265ns  (logic 1.548ns (47.411%)  route 1.717ns (52.589%))
+  Logic Levels:           9  (CARRY8=4 LUT3=2 LUT4=1 LUT6=2)
+  Clock Path Skew:        -0.275ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.161ns = ( 5.494 - 3.333 ) 
+    Source Clock Delay      (SCD):    2.559ns
+    Clock Pessimism Removal (CPR):    0.123ns
+  Clock Uncertainty:      0.104ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.195ns
+    Phase Error              (PE):    0.000ns
+  Clock Net Delay (Source):      2.292ns (routing 0.795ns, distribution 1.497ns)
+  Clock Net Delay (Destination): 1.945ns (routing 0.726ns, distribution 1.219ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_pl_0 rise edge)
+                                                      0.000     0.000 r  
+    PS8_X0Y0             PS8                          0.000     0.000 r  design_1_i/zynq_ultra_ps_e_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.229     0.229    design_1_i/zynq_ultra_ps_e_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y58        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.038     0.267 r  design_1_i/zynq_ultra_ps_e_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X0Y1 (CLOCK_ROOT)    net (fo=22236, routed)       2.292     2.559    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/ap_clk
+    RAMB36_X2Y11         RAMB36E2                                     r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/q0_reg_18/CLKARDCLK
+  -------------------------------------------------------------------    -------------------
+    RAMB36_X2Y11         RAMB36E2 (Prop_RAMB36E2_RAMB36_CLKARDCLK_DOUTADOUT[3])
+                                                      0.298     2.857 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/q0_reg_18/DOUTADOUT[3]
+                         net (fo=19, routed)          0.436     3.293    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U82/out[3]
+    SLICE_X15Y57         LUT6 (Prop_G6LUT_SLICEL_I3_O)
+                                                      0.186     3.479 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U82/prev_fu_1094[1303]_i_30/O
+                         net (fo=2, routed)           0.400     3.879    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/prev_fu_1094_reg[1303]_i_12[1]
+    SLICE_X14Y58         LUT6 (Prop_F6LUT_SLICEM_I0_O)
+                                                      0.056     3.935 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/prev_fu_1094[1303]_i_37/O
+                         net (fo=1, routed)           0.029     3.964    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U82/prev_fu_1094[1303]_i_8_0[5]
+    SLICE_X14Y58         CARRY8 (Prop_CARRY8_SLICEM_S[5]_O[6])
+                                                      0.186     4.150 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U82/prev_fu_1094_reg[1303]_i_12/O[6]
+                         net (fo=2, routed)           0.380     4.530    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U82/prev_fu_1094_reg[1303]_i_12_n_9
+    SLICE_X15Y59         LUT3 (Prop_G6LUT_SLICEL_I1_O)
+                                                      0.151     4.681 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U82/prev_fu_1094[1311]_i_19/O
+                         net (fo=2, routed)           0.110     4.790    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U82/prev_fu_1094[1311]_i_19_n_0
+    SLICE_X15Y60         LUT4 (Prop_G6LUT_SLICEL_I0_O)
+                                                      0.137     4.927 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U82/prev_fu_1094[1311]_i_27/O
+                         net (fo=1, routed)           0.012     4.939    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U82/prev_fu_1094[1311]_i_27_n_0
+    SLICE_X15Y60         CARRY8 (Prop_CARRY8_SLICEL_S[6]_CO[7])
+                                                      0.171     5.110 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U82/prev_fu_1094_reg[1311]_i_3/CO[7]
+                         net (fo=1, routed)           0.030     5.140    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U82/prev_fu_1094_reg[1311]_i_3_n_0
+    SLICE_X15Y61         CARRY8 (Prop_CARRY8_SLICEL_CI_O[0])
+                                                      0.078     5.218 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U82/prev_fu_1094_reg[1311]_i_2/O[0]
+                         net (fo=2, routed)           0.268     5.487    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/prev_fu_1094_reg[1311]_0[0]
+    SLICE_X16Y61         LUT3 (Prop_E6LUT_SLICEM_I2_O)
+                                                      0.083     5.570 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/prev_fu_1094[1311]_i_7/O
+                         net (fo=1, routed)           0.018     5.588    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U82/S[0]
+    SLICE_X16Y61         CARRY8 (Prop_CARRY8_SLICEM_S[4]_O[7])
+                                                      0.202     5.790 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U82/prev_fu_1094_reg[1311]_i_1/O[7]
+                         net (fo=1, routed)           0.034     5.824    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/add_ln97_81_fu_4510_p2[15]
+    SLICE_X16Y61         FDRE                                         r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/prev_fu_1094_reg[1311]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_pl_0 rise edge)
+                                                      3.333     3.333 r  
+    PS8_X0Y0             PS8                          0.000     3.333 r  design_1_i/zynq_ultra_ps_e_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.181     3.514    design_1_i/zynq_ultra_ps_e_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y58        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.035     3.549 r  design_1_i/zynq_ultra_ps_e_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X0Y1 (CLOCK_ROOT)    net (fo=22236, routed)       1.945     5.494    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/ap_clk
+    SLICE_X16Y61         FDRE                                         r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/prev_fu_1094_reg[1311]/C
+                         clock pessimism              0.123     5.617    
+                         clock uncertainty           -0.104     5.513    
+    SLICE_X16Y61         FDRE (Setup_HFF_SLICEM_C_D)
+                                                      0.044     5.557    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/prev_fu_1094_reg[1311]
+  -------------------------------------------------------------------
+                         required time                          5.557    
+                         arrival time                          -5.824    
+  -------------------------------------------------------------------
+                         slack                                 -0.267    
+
+Slack (VIOLATED) :        -0.266ns  (required time - arrival time)
+  Source:                 design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/q0_reg_9/CLKARDCLK
+                            (rising edge-triggered cell RAMB36E2 clocked by clk_pl_0  {rise@0.000ns fall@1.666ns period=3.333ns})
+  Destination:            design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/prev_fu_1094_reg[654]/D
+                            (rising edge-triggered cell FDRE clocked by clk_pl_0  {rise@0.000ns fall@1.666ns period=3.333ns})
+  Path Group:             clk_pl_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            3.333ns  (clk_pl_0 rise@3.333ns - clk_pl_0 rise@0.000ns)
+  Data Path Delay:        3.385ns  (logic 1.664ns (49.165%)  route 1.721ns (50.835%))
+  Logic Levels:           10  (CARRY8=5 LUT3=2 LUT4=1 LUT6=2)
+  Clock Path Skew:        -0.154ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.375ns = ( 5.708 - 3.333 ) 
+    Source Clock Delay      (SCD):    2.708ns
+    Clock Pessimism Removal (CPR):    0.179ns
+  Clock Uncertainty:      0.104ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.195ns
+    Phase Error              (PE):    0.000ns
+  Clock Net Delay (Source):      2.441ns (routing 0.795ns, distribution 1.646ns)
+  Clock Net Delay (Destination): 2.159ns (routing 0.726ns, distribution 1.433ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_pl_0 rise edge)
+                                                      0.000     0.000 r  
+    PS8_X0Y0             PS8                          0.000     0.000 r  design_1_i/zynq_ultra_ps_e_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.229     0.229    design_1_i/zynq_ultra_ps_e_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y58        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.038     0.267 r  design_1_i/zynq_ultra_ps_e_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X0Y1 (CLOCK_ROOT)    net (fo=22236, routed)       2.441     2.708    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/ap_clk
+    RAMB36_X4Y14         RAMB36E2                                     r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/q0_reg_9/CLKARDCLK
+  -------------------------------------------------------------------    -------------------
+    RAMB36_X4Y14         RAMB36E2 (Prop_RAMB36E2_RAMB36_CLKARDCLK_DOUTADOUT[0])
+                                                      0.305     3.013 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/q0_reg_9/DOUTADOUT[0]
+                         net (fo=17, routed)          0.539     3.552    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U41/out[4]
+    SLICE_X37Y82         LUT6 (Prop_G6LUT_SLICEM_I5_O)
+                                                      0.057     3.609 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U41/prev_fu_1094[647]_i_37/O
+                         net (fo=2, routed)           0.107     3.716    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/prev_fu_1094_reg[647]_i_19[1]
+    SLICE_X37Y83         LUT6 (Prop_F6LUT_SLICEM_I0_O)
+                                                      0.149     3.865 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/prev_fu_1094[647]_i_44/O
+                         net (fo=1, routed)           0.029     3.894    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U41/S[5]
+    SLICE_X37Y83         CARRY8 (Prop_CARRY8_SLICEM_S[5]_CO[7])
+                                                      0.238     4.132 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U41/prev_fu_1094_reg[647]_i_19/CO[7]
+                         net (fo=1, routed)           0.030     4.162    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U41/prev_fu_1094_reg[647]_i_19_n_0
+    SLICE_X37Y84         CARRY8 (Prop_CARRY8_SLICEM_CI_O[0])
+                                                      0.078     4.240 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U41/prev_fu_1094_reg[655]_i_45/O[0]
+                         net (fo=2, routed)           0.488     4.728    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U41/prev_fu_1094_reg[655]_i_45_n_15
+    SLICE_X38Y85         LUT3 (Prop_H6LUT_SLICEL_I2_O)
+                                                      0.083     4.811 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U41/prev_fu_1094[655]_i_27/O
+                         net (fo=2, routed)           0.103     4.914    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U41/prev_fu_1094[655]_i_27_n_0
+    SLICE_X38Y84         LUT4 (Prop_F6LUT_SLICEL_I3_O)
+                                                      0.150     5.064 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U41/prev_fu_1094[655]_i_35/O
+                         net (fo=1, routed)           0.015     5.079    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U41/prev_fu_1094[655]_i_35_n_0
+    SLICE_X38Y84         CARRY8 (Prop_CARRY8_SLICEL_S[5]_CO[7])
+                                                      0.232     5.311 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U41/prev_fu_1094_reg[655]_i_18/CO[7]
+                         net (fo=1, routed)           0.030     5.341    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U41/prev_fu_1094_reg[655]_i_18_n_0
+    SLICE_X38Y85         CARRY8 (Prop_CARRY8_SLICEL_CI_O[1])
+                                                      0.106     5.447 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U41/prev_fu_1094_reg[655]_i_17/O[1]
+                         net (fo=1, routed)           0.317     5.764    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/product_40_fu_3469_p2[13]
+    SLICE_X40Y84         LUT3 (Prop_F6LUT_SLICEM_I2_O)
+                                                      0.080     5.844 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/prev_fu_1094[655]_i_11/O
+                         net (fo=1, routed)           0.029     5.873    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/prev_fu_1094[655]_i_11_n_0
+    SLICE_X40Y84         CARRY8 (Prop_CARRY8_SLICEM_S[5]_O[6])
+                                                      0.186     6.059 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/prev_fu_1094_reg[655]_i_1/O[6]
+                         net (fo=1, routed)           0.034     6.093    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/add_ln97_40_fu_3485_p2[14]
+    SLICE_X40Y84         FDRE                                         r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/prev_fu_1094_reg[654]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_pl_0 rise edge)
+                                                      3.333     3.333 r  
+    PS8_X0Y0             PS8                          0.000     3.333 r  design_1_i/zynq_ultra_ps_e_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.181     3.514    design_1_i/zynq_ultra_ps_e_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y58        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.035     3.549 r  design_1_i/zynq_ultra_ps_e_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X0Y1 (CLOCK_ROOT)    net (fo=22236, routed)       2.159     5.708    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/ap_clk
+    SLICE_X40Y84         FDRE                                         r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/prev_fu_1094_reg[654]/C
+                         clock pessimism              0.179     5.887    
+                         clock uncertainty           -0.104     5.784    
+    SLICE_X40Y84         FDRE (Setup_GFF_SLICEM_C_D)
+                                                      0.043     5.827    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/prev_fu_1094_reg[654]
+  -------------------------------------------------------------------
+                         required time                          5.827    
+                         arrival time                          -6.093    
+  -------------------------------------------------------------------
+                         slack                                 -0.266    
+
+Slack (VIOLATED) :        -0.265ns  (required time - arrival time)
+  Source:                 design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/q0_reg_10/CLKARDCLK
+                            (rising edge-triggered cell RAMB36E2 clocked by clk_pl_0  {rise@0.000ns fall@1.666ns period=3.333ns})
+  Destination:            design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/prev_fu_1094_reg[751]/D
+                            (rising edge-triggered cell FDRE clocked by clk_pl_0  {rise@0.000ns fall@1.666ns period=3.333ns})
+  Path Group:             clk_pl_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            3.333ns  (clk_pl_0 rise@3.333ns - clk_pl_0 rise@0.000ns)
+  Data Path Delay:        3.175ns  (logic 1.634ns (51.465%)  route 1.541ns (48.535%))
+  Logic Levels:           9  (CARRY8=4 LUT3=2 LUT4=1 LUT6=2)
+  Clock Path Skew:        -0.363ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.138ns = ( 5.471 - 3.333 ) 
+    Source Clock Delay      (SCD):    2.676ns
+    Clock Pessimism Removal (CPR):    0.175ns
+  Clock Uncertainty:      0.104ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.195ns
+    Phase Error              (PE):    0.000ns
+  Clock Net Delay (Source):      2.409ns (routing 0.795ns, distribution 1.614ns)
+  Clock Net Delay (Destination): 1.922ns (routing 0.726ns, distribution 1.196ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_pl_0 rise edge)
+                                                      0.000     0.000 r  
+    PS8_X0Y0             PS8                          0.000     0.000 r  design_1_i/zynq_ultra_ps_e_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.229     0.229    design_1_i/zynq_ultra_ps_e_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y58        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.038     0.267 r  design_1_i/zynq_ultra_ps_e_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X0Y1 (CLOCK_ROOT)    net (fo=22236, routed)       2.409     2.676    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/ap_clk
+    RAMB36_X3Y16         RAMB36E2                                     r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/q0_reg_10/CLKARDCLK
+  -------------------------------------------------------------------    -------------------
+    RAMB36_X3Y16         RAMB36E2 (Prop_RAMB36E2_RAMB36_CLKARDCLK_DOUTADOUT[9])
+                                                      0.304     2.980 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/q0_reg_10/DOUTADOUT[9]
+                         net (fo=19, routed)          0.614     3.594    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U47/out[1]
+    SLICE_X27Y89         LUT6 (Prop_H6LUT_SLICEL_I1_O)
+                                                      0.137     3.731 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U47/prev_fu_1094[743]_i_16/O
+                         net (fo=2, routed)           0.155     3.887    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/mul_8s_8s_16_1_1_U47/prev_fu_1094_reg[743]_i_3[0]
+    SLICE_X27Y90         LUT6 (Prop_E6LUT_SLICEL_I0_O)
+                                                      0.138     4.025 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/prev_fu_1094[743]_i_23/O
+                         net (fo=1, routed)           0.011     4.036    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148_n_739
+    SLICE_X27Y90         CARRY8 (Prop_CARRY8_SLICEL_S[4]_O[6])
+                                                      0.178     4.214 r  design_1_i/MultilayerPerceptron_0/inst/mul_8s_8s_16_1_1_U47/prev_fu_1094_reg[743]_i_3/O[6]
+                         net (fo=2, routed)           0.201     4.415    design_1_i/MultilayerPerceptron_0/inst/mul_8s_8s_16_1_1_U47/prev_fu_1094_reg[743]_i_3_n_9
+    SLICE_X26Y91         LUT3 (Prop_C5LUT_SLICEL_I2_O)
+                                                      0.091     4.506 r  design_1_i/MultilayerPerceptron_0/inst/mul_8s_8s_16_1_1_U47/prev_fu_1094[751]_i_22/O
+                         net (fo=2, routed)           0.221     4.727    design_1_i/MultilayerPerceptron_0/inst/mul_8s_8s_16_1_1_U47/prev_fu_1094[751]_i_22_n_0
+    SLICE_X26Y91         LUT4 (Prop_D6LUT_SLICEL_I3_O)
+                                                      0.185     4.912 r  design_1_i/MultilayerPerceptron_0/inst/mul_8s_8s_16_1_1_U47/prev_fu_1094[751]_i_30/O
+                         net (fo=1, routed)           0.013     4.925    design_1_i/MultilayerPerceptron_0/inst/mul_8s_8s_16_1_1_U47/prev_fu_1094[751]_i_30_n_0
+    SLICE_X26Y91         CARRY8 (Prop_CARRY8_SLICEL_S[3]_CO[7])
+                                                      0.220     5.145 r  design_1_i/MultilayerPerceptron_0/inst/mul_8s_8s_16_1_1_U47/prev_fu_1094_reg[751]_i_3/CO[7]
+                         net (fo=1, routed)           0.030     5.175    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U47/prev_fu_1094_reg[751][0]
+    SLICE_X26Y92         CARRY8 (Prop_CARRY8_SLICEL_CI_O[1])
+                                                      0.106     5.281 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U47/prev_fu_1094_reg[751]_i_2/O[1]
+                         net (fo=2, routed)           0.246     5.527    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/prev_fu_1094_reg[751]_0[5]
+    SLICE_X25Y91         LUT3 (Prop_F6LUT_SLICEL_I2_O)
+                                                      0.081     5.608 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/prev_fu_1094[751]_i_6/O
+                         net (fo=1, routed)           0.015     5.623    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/prev_fu_1094[751]_i_6_n_0
+    SLICE_X25Y91         CARRY8 (Prop_CARRY8_SLICEL_S[5]_O[7])
+                                                      0.194     5.817 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/prev_fu_1094_reg[751]_i_1/O[7]
+                         net (fo=1, routed)           0.034     5.851    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/add_ln97_46_fu_3635_p2[15]
+    SLICE_X25Y91         FDRE                                         r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/prev_fu_1094_reg[751]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_pl_0 rise edge)
+                                                      3.333     3.333 r  
+    PS8_X0Y0             PS8                          0.000     3.333 r  design_1_i/zynq_ultra_ps_e_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.181     3.514    design_1_i/zynq_ultra_ps_e_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y58        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.035     3.549 r  design_1_i/zynq_ultra_ps_e_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X0Y1 (CLOCK_ROOT)    net (fo=22236, routed)       1.922     5.471    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/ap_clk
+    SLICE_X25Y91         FDRE                                         r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/prev_fu_1094_reg[751]/C
+                         clock pessimism              0.175     5.646    
+                         clock uncertainty           -0.104     5.543    
+    SLICE_X25Y91         FDRE (Setup_HFF_SLICEL_C_D)
+                                                      0.044     5.587    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/prev_fu_1094_reg[751]
+  -------------------------------------------------------------------
+                         required time                          5.587    
+                         arrival time                          -5.851    
+  -------------------------------------------------------------------
+                         slack                                 -0.265    
+
+Slack (VIOLATED) :        -0.264ns  (required time - arrival time)
+  Source:                 design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/q0_reg_14/CLKARDCLK
+                            (rising edge-triggered cell RAMB36E2 clocked by clk_pl_0  {rise@0.000ns fall@1.666ns period=3.333ns})
+  Destination:            design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/prev_fu_1094_reg[1023]/D
+                            (rising edge-triggered cell FDRE clocked by clk_pl_0  {rise@0.000ns fall@1.666ns period=3.333ns})
+  Path Group:             clk_pl_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            3.333ns  (clk_pl_0 rise@3.333ns - clk_pl_0 rise@0.000ns)
+  Data Path Delay:        3.292ns  (logic 1.566ns (47.575%)  route 1.726ns (52.425%))
+  Logic Levels:           8  (CARRY8=4 LUT2=1 LUT3=1 LUT4=1 LUT6=1)
+  Clock Path Skew:        -0.246ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.236ns = ( 5.569 - 3.333 ) 
+    Source Clock Delay      (SCD):    2.656ns
+    Clock Pessimism Removal (CPR):    0.173ns
+  Clock Uncertainty:      0.104ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.195ns
+    Phase Error              (PE):    0.000ns
+  Clock Net Delay (Source):      2.389ns (routing 0.795ns, distribution 1.594ns)
+  Clock Net Delay (Destination): 2.020ns (routing 0.726ns, distribution 1.294ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_pl_0 rise edge)
+                                                      0.000     0.000 r  
+    PS8_X0Y0             PS8                          0.000     0.000 r  design_1_i/zynq_ultra_ps_e_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.229     0.229    design_1_i/zynq_ultra_ps_e_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y58        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.038     0.267 r  design_1_i/zynq_ultra_ps_e_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X0Y1 (CLOCK_ROOT)    net (fo=22236, routed)       2.389     2.656    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/ap_clk
+    RAMB36_X3Y10         RAMB36E2                                     r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/q0_reg_14/CLKARDCLK
+  -------------------------------------------------------------------    -------------------
+    RAMB36_X3Y10         RAMB36E2 (Prop_RAMB36E2_RAMB36_CLKARDCLK_DOUTADOUT[1])
+                                                      0.296     2.952 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/q0_reg_14/DOUTADOUT[1]
+                         net (fo=19, routed)          0.555     3.506    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U64/out[1]
+    SLICE_X28Y50         LUT6 (Prop_E6LUT_SLICEM_I3_O)
+                                                      0.138     3.644 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U64/prev_fu_1094[1015]_i_17/O
+                         net (fo=1, routed)           0.275     3.919    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U64/prev_fu_1094[1015]_i_17_n_0
+    SLICE_X28Y57         CARRY8 (Prop_CARRY8_SLICEM_DI[3]_O[5])
+                                                      0.268     4.187 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U64/prev_fu_1094_reg[1015]_i_3/O[5]
+                         net (fo=2, routed)           0.212     4.399    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U64/prev_fu_1094_reg[1015]_i_3_n_10
+    SLICE_X27Y57         LUT2 (Prop_B5LUT_SLICEL_I1_O)
+                                                      0.097     4.496 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U64/prev_fu_1094[1023]_i_23/O
+                         net (fo=2, routed)           0.190     4.687    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U64/prev_fu_1094[1023]_i_23_n_0
+    SLICE_X27Y57         LUT4 (Prop_C6LUT_SLICEL_I3_O)
+                                                      0.150     4.837 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U64/prev_fu_1094[1023]_i_31/O
+                         net (fo=1, routed)           0.015     4.852    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U64/prev_fu_1094[1023]_i_31_n_0
+    SLICE_X27Y57         CARRY8 (Prop_CARRY8_SLICEL_S[2]_O[3])
+                                                      0.117     4.969 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U64/prev_fu_1094_reg[1023]_i_3/O[3]
+                         net (fo=2, routed)           0.394     5.362    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U64/product_63_fu_4044_p2[7]
+    SLICE_X29Y58         LUT3 (Prop_H6LUT_SLICEM_I2_O)
+                                                      0.154     5.516 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U64/prev_fu_1094[1015]_i_4/O
+                         net (fo=1, routed)           0.021     5.537    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U64/prev_fu_1094[1015]_i_4_n_0
+    SLICE_X29Y58         CARRY8 (Prop_CARRY8_SLICEM_S[7]_CO[7])
+                                                      0.175     5.712 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U64/prev_fu_1094_reg[1015]_i_1/CO[7]
+                         net (fo=1, routed)           0.030     5.742    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U64/prev_fu_1094_reg[1015]_i_1_n_0
+    SLICE_X29Y59         CARRY8 (Prop_CARRY8_SLICEM_CI_O[7])
+                                                      0.171     5.913 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U64/prev_fu_1094_reg[1023]_i_1/O[7]
+                         net (fo=1, routed)           0.034     5.947    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/add_ln97_63_fu_4060_p2[15]
+    SLICE_X29Y59         FDRE                                         r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/prev_fu_1094_reg[1023]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_pl_0 rise edge)
+                                                      3.333     3.333 r  
+    PS8_X0Y0             PS8                          0.000     3.333 r  design_1_i/zynq_ultra_ps_e_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.181     3.514    design_1_i/zynq_ultra_ps_e_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y58        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.035     3.549 r  design_1_i/zynq_ultra_ps_e_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X0Y1 (CLOCK_ROOT)    net (fo=22236, routed)       2.020     5.569    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/ap_clk
+    SLICE_X29Y59         FDRE                                         r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/prev_fu_1094_reg[1023]/C
+                         clock pessimism              0.173     5.742    
+                         clock uncertainty           -0.104     5.639    
+    SLICE_X29Y59         FDRE (Setup_HFF_SLICEM_C_D)
+                                                      0.044     5.683    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/prev_fu_1094_reg[1023]
+  -------------------------------------------------------------------
+                         required time                          5.683    
+                         arrival time                          -5.947    
+  -------------------------------------------------------------------
+                         slack                                 -0.264    
+
+Slack (VIOLATED) :        -0.264ns  (required time - arrival time)
+  Source:                 design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/q0_reg_20/CLKARDCLK
+                            (rising edge-triggered cell RAMB36E2 clocked by clk_pl_0  {rise@0.000ns fall@1.666ns period=3.333ns})
+  Destination:            design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/prev_fu_1094_reg[1455]/D
+                            (rising edge-triggered cell FDRE clocked by clk_pl_0  {rise@0.000ns fall@1.666ns period=3.333ns})
+  Path Group:             clk_pl_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            3.333ns  (clk_pl_0 rise@3.333ns - clk_pl_0 rise@0.000ns)
+  Data Path Delay:        3.274ns  (logic 1.627ns (49.693%)  route 1.647ns (50.307%))
+  Logic Levels:           8  (CARRY8=4 LUT2=1 LUT3=1 LUT4=1 LUT6=1)
+  Clock Path Skew:        -0.264ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.210ns = ( 5.543 - 3.333 ) 
+    Source Clock Delay      (SCD):    2.647ns
+    Clock Pessimism Removal (CPR):    0.173ns
+  Clock Uncertainty:      0.104ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.195ns
+    Phase Error              (PE):    0.000ns
+  Clock Net Delay (Source):      2.380ns (routing 0.795ns, distribution 1.585ns)
+  Clock Net Delay (Destination): 1.994ns (routing 0.726ns, distribution 1.268ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_pl_0 rise edge)
+                                                      0.000     0.000 r  
+    PS8_X0Y0             PS8                          0.000     0.000 r  design_1_i/zynq_ultra_ps_e_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.229     0.229    design_1_i/zynq_ultra_ps_e_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y58        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.038     0.267 r  design_1_i/zynq_ultra_ps_e_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X0Y1 (CLOCK_ROOT)    net (fo=22236, routed)       2.380     2.647    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/ap_clk
+    RAMB36_X3Y5          RAMB36E2                                     r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/q0_reg_20/CLKARDCLK
+  -------------------------------------------------------------------    -------------------
+    RAMB36_X3Y5          RAMB36E2 (Prop_RAMB36E2_RAMB36_CLKARDCLK_DOUTADOUT[2])
+                                                      0.305     2.952 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/weights1_U/q0_reg_20/DOUTADOUT[2]
+                         net (fo=16, routed)          0.324     3.276    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U91/out[2]
+    SLICE_X32Y26         LUT6 (Prop_E6LUT_SLICEL_I1_O)
+                                                      0.223     3.499 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U91/prev_fu_1094[1447]_i_39/O
+                         net (fo=1, routed)           0.299     3.798    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U91/prev_fu_1094[1447]_i_39_n_0
+    SLICE_X31Y30         CARRY8 (Prop_CARRY8_SLICEM_DI[3]_O[5])
+                                                      0.268     4.066 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U91/prev_fu_1094_reg[1447]_i_19/O[5]
+                         net (fo=2, routed)           0.306     4.372    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U91/prev_fu_1094_reg[1447]_i_19_n_10
+    SLICE_X30Y29         LUT2 (Prop_B5LUT_SLICEL_I1_O)
+                                                      0.097     4.469 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U91/prev_fu_1094[1455]_i_30/O
+                         net (fo=2, routed)           0.224     4.693    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U91/prev_fu_1094[1455]_i_30_n_0
+    SLICE_X30Y29         LUT4 (Prop_C6LUT_SLICEL_I3_O)
+                                                      0.081     4.774 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U91/prev_fu_1094[1455]_i_38/O
+                         net (fo=1, routed)           0.015     4.789    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U91/prev_fu_1094[1455]_i_38_n_0
+    SLICE_X30Y29         CARRY8 (Prop_CARRY8_SLICEL_S[2]_O[2])
+                                                      0.081     4.870 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/mul_8s_8s_16_1_1_U91/prev_fu_1094_reg[1455]_i_18/O[2]
+                         net (fo=1, routed)           0.362     5.232    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/product_90_fu_4719_p2[6]
+    SLICE_X29Y29         LUT3 (Prop_G6LUT_SLICEM_I2_O)
+                                                      0.226     5.458 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/prev_fu_1094[1447]_i_11/O
+                         net (fo=1, routed)           0.021     5.479    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/prev_fu_1094[1447]_i_11_n_0
+    SLICE_X29Y29         CARRY8 (Prop_CARRY8_SLICEM_S[6]_CO[7])
+                                                      0.175     5.654 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/prev_fu_1094_reg[1447]_i_1/CO[7]
+                         net (fo=1, routed)           0.062     5.716    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/prev_fu_1094_reg[1447]_i_1_n_0
+    SLICE_X29Y30         CARRY8 (Prop_CARRY8_SLICEM_CI_O[7])
+                                                      0.171     5.887 r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/prev_fu_1094_reg[1455]_i_1/O[7]
+                         net (fo=1, routed)           0.034     5.921    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/add_ln97_90_fu_4735_p2[15]
+    SLICE_X29Y30         FDRE                                         r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/prev_fu_1094_reg[1455]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_pl_0 rise edge)
+                                                      3.333     3.333 r  
+    PS8_X0Y0             PS8                          0.000     3.333 r  design_1_i/zynq_ultra_ps_e_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.181     3.514    design_1_i/zynq_ultra_ps_e_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y58        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.035     3.549 r  design_1_i/zynq_ultra_ps_e_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X0Y1 (CLOCK_ROOT)    net (fo=22236, routed)       1.994     5.543    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/ap_clk
+    SLICE_X29Y30         FDRE                                         r  design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/prev_fu_1094_reg[1455]/C
+                         clock pessimism              0.173     5.716    
+                         clock uncertainty           -0.104     5.613    
+    SLICE_X29Y30         FDRE (Setup_HFF_SLICEM_C_D)
+                                                      0.044     5.657    design_1_i/MultilayerPerceptron_0/inst/grp_FullyConnectedLayer_fu_148/grp_FullyConnectedLayer_Pipeline_VITIS_LOOP_38_2_fu_2162/prev_fu_1094_reg[1455]
+  -------------------------------------------------------------------
+                         required time                          5.657    
+                         arrival time                          -5.921    
+  -------------------------------------------------------------------
+                         slack                                 -0.264    
+
+
+
+
