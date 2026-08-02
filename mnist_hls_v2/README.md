@@ -102,17 +102,32 @@ Reaching 277 MHz would need an MMCM in the PL rather than the PS clock, for an
   this data, but it is close, and a rescaled input or retrained model could
   break it silently.
 
-## Two v1 findings worth knowing
+## v1's `MultiplyFabric` works, and v2 cannot reproduce it
 
-**`MultiplyFabric` in v1 does nothing.** It carries
-`#pragma HLS BIND_OP op=mul impl=fabric`, but Vitis 2025.1 rejects both
-`mul + fabric` and `mul + dsp` as invalid for xck24. v1 only synthesised
-cleanly because its pragma checker aborted on `DataPack.h`'s missing
-`<cstddef>` before reaching the directive. The DSP/LUT split in v1 is HLS's
-automatic allocation, not the pragma.
+v1 wraps its layer-1 and layer-3 multiplies in
+`#pragma HLS BIND_OP variable=product op=mul impl=fabric`. Synthesising v1's
+source with and without that one line:
 
-**The working control is global, not per-variable**: `syn.op=mul -impl dsp` in
-the build config. Without it HLS puts all 394 multipliers on fabric.
+| | BRAM | DSP | FF | LUT | cycles |
+|---|---|---|---|---|---|
+| with the pragma | 119 | **256** | 20,643 | 37,002 | 1411 |
+| pragma removed | 119 | **394** | 27,993 | 25,418 | 1414 |
+
+394 − 256 = 138 = layer 1's 128 plus layer 3's 10. The pragma does exactly
+what it claims, and it is **load-bearing**: without it the design needs 394
+DSPs and does not fit in KD240's 360.
+
+The confusing part is that Vitis 2025.1's `xilinx-performance-pragma-detector`
+lint pass rejects that same directive as
+`Invalid Directive: for current device, mul + fabric is invalid combination`.
+The lint is wrong -- the synthesis engine honours the pragma regardless. v1
+never sees the false alarm because the lint pass aborts earlier, on
+`DataPack.h`'s unresolvable `#include <cstddef>`.
+
+This is a problem for v2, not for v1. Dropping the `ap_int` dependency lets the
+lint pass run to completion, so it hard-errors on the pragma and synthesis
+fails. v2 therefore cannot use the control v1 relies on, and falls back to
+`syn.op=mul -impl dsp` plus shift-add lanes -- which is measurably worse.
 
 ## DSP budget
 
@@ -126,16 +141,20 @@ Measured (HLS estimates, 4 ns target):
 
 | variant | DSP | LUT | cycles/image | fits? |
 |---|---|---|---|---|
-| v1 | 256 | 37,002 | 1411 | yes |
-| no `syn.op` | 0 | 51,325 | 1407 | yes |
-| all lanes on DSP | 394 | 35,661 | 1410 | **no** — over 360 |
-| `kDspBudget=354` | 354 | 49,005 | 1412 | yes |
+| **v1, with its BIND_OP pragma** | **256** | **37,002** | 1411 | **yes — best** |
+| v1, pragma removed | 394 | 25,418 | 1414 | no — over 360 |
+| v2, no `syn.op` | 0 | 51,325 | 1407 | yes |
+| v2, all lanes on DSP | 394 | 35,661 | 1410 | no — over 360 |
+| v2, `kDspBudget=354` | 354 | 49,005 | 1412 | yes |
 
-The shift-add lanes cost ~325 LUT each, well above HLS's own fabric
-multiplier, so trading fabric lanes for DSPs is currently a LUT *regression*.
-v1's automatic split remains the best LUT result that fits. Genuinely reducing
-LUT needs DSP48E2 int8 pair-packing (two products sharing one operand in one
-DSP, 394 → ~197 DSPs and no fabric multipliers) — not implemented here.
+v1's arrangement is the best result that fits, and v2 cannot currently match
+it because the lint pass blocks the pragma v1 uses. The shift-add lanes cost
+~325 LUT each, well above HLS's own fabric multiplier, so v2's fallback is a
+LUT regression rather than the reduction it was meant to be.
+
+Reducing LUT below v1 would need DSP48E2 int8 pair-packing (two products
+sharing one operand in one DSP, 394 → ~197 DSPs and no fabric multipliers) —
+not implemented here.
 
 ## Layout
 
