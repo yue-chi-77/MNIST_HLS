@@ -27,15 +27,19 @@ extern long mlp_acc_overflows; // times the int16 accumulator disagreed with int
 
 // int8 x int8 -> int16.
 //
-// v1 wrapped this in `#pragma HLS BIND_OP op=mul impl=fabric` to keep layers 1
-// and 3 off the DSPs. That pragma never did anything: Vitis 2025.1 rejects
-// both `mul + fabric` and `mul + dsp` as invalid for xck24, and v1 only got a
-// clean run because its pragma checker died on DataPack.h's missing <cstddef>
-// before ever reaching the directive.
+// v1 wraps this in `#pragma HLS BIND_OP op=mul impl=fabric` to keep layers 1
+// and 3 off the DSPs, and that pragma works: synthesising v1 with and without
+// it gives 256 vs 394 DSPs, a difference of exactly layer 1's 128 plus layer
+// 3's 10. It is load-bearing -- without it the design wants 394 DSPs and does
+// not fit in KD240's 360.
 //
-// The lever that does work on this device is the global `syn.op=mul -impl dsp`
-// in the build config: with it, every `*` binds to a DSP. Lanes that must not
-// have one use MulShiftAdd below instead.
+// v2 cannot use it. Vitis 2025.1's pragma lint wrongly reports
+// `mul + fabric is invalid combination` and hard-fails the build; v1 escapes
+// the false alarm only because that lint pass aborts earlier on DataPack.h's
+// unresolvable <cstddef>. Dropping the ap_int dependency lets the lint run,
+// so v2 falls back to the global `syn.op=mul -impl dsp` (every `*` takes a
+// DSP) plus MulShiftAdd below for the lanes that must not have one. That
+// fallback is measurably worse than what v1 gets.
 inline int16_t Mul(int8_t a, int8_t b) {
 #pragma HLS INLINE
     return (int16_t)((int16_t)a * (int16_t)b);
@@ -44,10 +48,12 @@ inline int16_t Mul(int8_t a, int8_t b) {
 // Same product, built from shifts and adds instead of the `*` operator.
 //
 // With `syn.op=mul -impl dsp` in the build config every `*` claims a DSP, and
-// the network wants 34 more than KD240 has. Per-variable BIND_OP cannot steer
-// individual lanes back to fabric on this device, but an expression that is
-// not a multiply at all is never a candidate for a DSP in the first place.
-// So the shortfall is expressed here rather than left to the allocator.
+// the network wants 34 more than KD240 has. v1 steers the surplus back to
+// fabric with a per-variable BIND_OP; this tree cannot, because the pragma
+// lint hard-fails on it (see Mul above). An expression that is not a multiply
+// at all is never a DSP candidate in the first place, so the shortfall is
+// spelled out here instead -- at ~325 LUT per lane, which is worse than the
+// fabric multiplier BIND_OP would have given us.
 //
 // b is signed, so bit 7 carries negative weight.
 inline int16_t MulShiftAdd(int8_t a, int8_t b) {

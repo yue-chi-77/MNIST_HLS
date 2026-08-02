@@ -30,8 +30,9 @@ syn.cflags=-I$root/src -std=c++14
 tb.cflags=-I$root/src -std=c++14 -DMLP_TEST_DATA_DIR='"$root/test/data"'
 # Bind every `*` to a DSP. Without this HLS puts all 394 multipliers on LUT
 # fabric (51k LUTs, 0 DSPs); the lanes that must stay off DSPs are expressed
-# in the source as shift-adds instead. Per-variable BIND_OP is rejected for
-# op=mul on xck24, so this global setting is the only working control.
+# in the source as shift-adds instead. v1 steers per-variable with BIND_OP
+# instead, which works but which Vitis 2025.1's pragma lint refuses to let
+# this tree compile -- see the note in src/mlp.hpp.
 syn.op=mul -impl dsp
 clock=${clock}ns
 EOF
